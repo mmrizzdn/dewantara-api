@@ -1,6 +1,8 @@
 var express = require('express');
 var logger = require('morgan');
 
+const cors = require('cors');
+
 var indexRouter = require('./routes/v1/index');
 // var usersRouter = require('./routes/users');
 
@@ -8,6 +10,7 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/v1', indexRouter);
 // app.use('/users', usersRouter);
