@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "node ./bin/www",
 		"dev": "nodemon ./bin/www",
-		"vercel-build": "prisma generate && prisma migrate deploy && next build"
+		"vercel-build": "prisma generate && prisma migrate deploy"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.13.0",
