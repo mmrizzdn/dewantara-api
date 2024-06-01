@@ -1,0 +1,14 @@
+### post event
+POST http://localhost:3000/api/v1/events
+Content-Type: application/json
+
+{
+    "name": "Pagelaran Wayang Kulit HARJASDA",
+    "year": 2024,
+    "month": 1,
+    "day": 3,
+    "city": "Sidoarjo"
+}
+
+### get events
+GET http://localhost:3000/api/v1/events
