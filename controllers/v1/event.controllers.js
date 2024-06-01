@@ -1,51 +1,73 @@
 const {
 	collection,
+	doc,
 	addDoc,
-	getDoc,
 	getDocs,
+	getDoc,
+	updateDoc,
+	deleteDoc,
 	Timestamp,
 } = require("firebase/firestore");
+
+const path = require("path");
+
 const { db } = require("../../libs/firebase");
+const imagekit = require("../../libs/imagekit");
 
 module.exports = {
 	postEvent: async (req, res, next) => {
 		try {
-			let { name, year, month, day, city } = req.body;
+			let { name, start_date, end_date, city } = req.body;
 
-			if (!name || !year || !month || !day || !city) {
+			if (!name || !start_date || !end_date || !city || !req.file) {
 				return res.status(400).json({
 					status: false,
-					message: "name, year, month, day, and city are required",
+					message:
+						"name, city, start date, end date, and image are required",
 					data: null,
 				});
 			}
 
-			let date = new Date(year, month - 1, day);
-			let timeStamp = Timestamp.fromDate(date);
+			let startDate = new Date(start_date);
+			let endDate = new Date(end_date);
 
-			let event = await addDoc(collection(db, "events"), {
-				name,
-				date: timeStamp,
-				city,
+			if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+				return res.status(400).json({
+					status: false,
+					message: "invalid date format",
+					data: null,
+				});
+			}
+
+			let startTimestamp = Timestamp.fromDate(startDate);
+			let endTimestamp = Timestamp.fromDate(endDate);
+
+			let strFile = req.file.buffer.toString("base64");
+
+			let { url } = await imagekit.upload({
+				fileName: Date.now() + path.extname(req.file.originalname),
+				file: strFile,
+				transformation: {
+					pre: "q-80",
+				},
 			});
 
-			let docSnap = await getDoc(event);
+			let eventRef = await addDoc(collection(db, "events"), {
+				name,
+				start_date: startTimestamp,
+				end_date: endTimestamp,
+				city,
+				image_url: url,
+			});
 
-			let timestampSnap = docSnap.data().date;
-			let dateSnap = new Date(timestampSnap.seconds * 1000);
-
-			let daySnap = dateSnap.getDate();
-			let monthSnap = dateSnap.getMonth() + 1;
-			let yearSnap = dateSnap.getFullYear();
+			let eventSnap = await getDoc(eventRef);
 
 			return res.status(201).json({
 				status: true,
-				message: "Created",
+				message: "created",
 				data: {
-					id: docSnap.id,
-					date: `${daySnap}-${monthSnap}-${yearSnap}`,
-					name: docSnap.data().name,
-					city: docSnap.data().city,
+					id: eventSnap.id,
+					...eventSnap.data(),
 				},
 			});
 		} catch (error) {
@@ -57,28 +79,19 @@ module.exports = {
 		try {
 			let querySnapshot = await getDocs(collection(db, "events"));
 
-			if (querySnapshot.length === 0) {
+			if (querySnapshot.empty) {
 				return res.status(404).json({
 					status: false,
-					message: "events not found",
+					message: "events is empty",
 					data: null,
 				});
 			}
 
 			let events = [];
-			querySnapshot.forEach((doc) => {
-				let timestampSnap = doc.data().date;
-				let dateSnap = new Date(timestampSnap.seconds * 1000);
-
-				let daySnap = dateSnap.getDate();
-				let monthSnap = dateSnap.getMonth() + 1;
-				let yearSnap = dateSnap.getFullYear();
-
+			querySnapshot.forEach((event) => {
 				events.push({
-					id: doc.id,
-					date: `${daySnap}-${monthSnap}-${yearSnap}`,
-					name: doc.data().name,
-					city: doc.data().city,
+					id: event.id,
+					...event.data(),
 				});
 			});
 
@@ -86,6 +99,136 @@ module.exports = {
 				status: true,
 				message: "OK",
 				data: events,
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
+	getEvent: async (req, res, next) => {
+		try {
+			let { id } = req.params;
+
+			let eventRef = doc(db, "events", id);
+			let eventSnap = await getDoc(eventRef);
+
+			if (!eventSnap.exists()) {
+				return res.status(404).json({
+					status: false,
+					message: "event not found",
+					data: null,
+				});
+			}
+
+			return res.status(200).json({
+				status: true,
+				message: "OK",
+				data: {
+					id: eventSnap.id,
+					...eventSnap.data(),
+				},
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
+	updateEvent: async (req, res, next) => {
+		try {
+			let { id } = req.params;
+			let eventRef = doc(db, "events", id);
+			let eventSnap = await getDoc(eventRef);
+
+			if (!eventSnap.exists()) {
+				return res.status(404).json({
+					status: false,
+					message: "event not found",
+					data: null,
+				});
+			}
+
+			let { name, start_date, end_date, city } = req.body;
+
+			if (!name || !start_date || !end_date || !city || !req.file) {
+				return res.status(400).json({
+					status: false,
+					message:
+						"name, city, start date, end date, and image are required",
+					data: null,
+				});
+			}
+
+			let startDate = new Date(start_date);
+			let endDate = new Date(end_date);
+
+			if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+				return res.status(400).json({
+					status: false,
+					message: "invalid date format",
+					data: null,
+				});
+			}
+
+			let startTimestamp = Timestamp.fromDate(startDate);
+			let endTimestamp = Timestamp.fromDate(endDate);
+
+			let strFile = req.file.buffer.toString("base64");
+
+			let { url } = await imagekit.upload({
+				fileName: Date.now() + path.extname(req.file.originalname),
+				file: strFile,
+				transformation: {
+					pre: "q-80",
+				},
+			});
+
+			await updateDoc(eventRef, {
+				name,
+				start_date: startTimestamp,
+				end_date: endTimestamp,
+				city,
+				image_url: url,
+			});
+
+			eventSnap = await getDoc(eventRef);
+
+			return res.status(201).json({
+				status: true,
+				message: "updated",
+				data: {
+					id: eventSnap.id,
+					...eventSnap.data(),
+				},
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
+	deleteEvent: async (req, res, next) => {
+		try {
+			let { id } = req.params;
+			let eventRef = doc(db, "events", id);
+
+			if (!eventRef) {
+				return res.status(404).json({
+					status: false,
+					message: "event not found",
+					data: null,
+				});
+			}
+
+			let eventSnap = await getDoc(eventRef);
+
+			await deleteDoc(doc(db, "events", id));
+
+			return res.status(201).json({
+				status: true,
+				message: "deleted",
+				data: {
+					id: eventSnap.id,
+					...eventSnap.data(),
+				},
 			});
 		} catch (error) {
 			next(error);
