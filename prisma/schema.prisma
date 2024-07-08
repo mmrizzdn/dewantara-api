@@ -1,0 +1,146 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String
+  isLoggedIn Boolean  @default(false)
+  imageUrl   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Puppet {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("puppets")
+}
+
+model Event {
+  id        Int      @id @default(autoincrement())
+  name      String
+  startDate DateTime @db.Date
+  endDate   DateTime @db.Date
+  location  String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("events")
+}
+
+model Museum {
+  id            Int             @id @default(autoincrement())
+  name          String
+  about         String
+  imageUrl      String
+  Location      Location[]
+  OperatingHour OperatingHour[]
+  Ticket        Ticket[]
+  Collection    Collection[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@map("museums")
+}
+
+model Location {
+  id        Int      @id @default(autoincrement())
+  address   String
+  regency   String
+  province  String
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("locations")
+}
+
+model OperatingHour {
+  id                Int      @id @default(autoincrement())
+  isSunday          Boolean
+  isMonday          Boolean
+  isTuesday         Boolean
+  isWednesday       Boolean
+  isThursday        Boolean
+  isFriday          Boolean
+  isSaturday        Boolean
+  isNationalHoliday Boolean
+  startTime         String
+  endTime           String
+  timezone          String
+  museumId          Int
+  museum            Museum   @relation(fields: [museumId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("operating_hours")
+}
+
+model Ticket {
+  id        Int      @id @default(autoincrement())
+  price     Decimal  @default(0.0)
+  type      Type     @default(INDIVIDUAL)
+  age       Age      @default(ADULT)
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tickets")
+}
+
+enum Type {
+  INDIVIDUAL
+  GROUP
+}
+
+enum Age {
+  CHILD
+  STUDENT
+  ADULT
+}
+
+model Collection {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("collections")
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("articles")
+}

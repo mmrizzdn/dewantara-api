@@ -1,29 +1,41 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+const { formatDistanceToNow } = require('date-fns');
+const path = require('path');
+
+const imagekit = require('../libs/imagekit');
 
 module.exports = {
 	postArticle: async (req, res, next) => {
 		try {
 			let { title, content } = req.body;
 
-			if (!title || !content) {
+			if (!title || !content || !req.file) {
 				return res.status(400).json({
 					status: false,
-					message: 'title and content are required',
+					message: 'title, content, and image required',
 					data: null
 				});
 			}
 
+			let strFile = req.file.buffer.toString('base64');
+
+			let { url } = await imagekit.upload({
+				fileName: Date.now() + path.extname(req.file.originalname),
+				file: strFile
+			});
+
 			let article = await prisma.article.create({
 				data: {
 					title,
-					content
+					content,
+					imageUrl: url
 				}
 			});
 
 			return res.status(201).json({
 				status: true,
-				message: 'Created',
+				message: 'article created',
 				data: article
 			});
 		} catch (error) {
@@ -31,7 +43,7 @@ module.exports = {
 		}
 	},
 
-	getArticles: async (req, res, next) => {
+	getAllArticles: async (req, res, next) => {
 		try {
 			let results = await prisma.article.findMany();
 
@@ -43,17 +55,26 @@ module.exports = {
 				});
 			}
 
+			let articles = results.map((article) => {
+				return {
+					...article,
+					timeAgo: formatDistanceToNow(new Date(article.createdAt), {
+						addSuffix: true
+					})
+				};
+			});
+
 			return res.status(200).json({
 				status: true,
 				message: 'OK',
-				data: results
+				data: articles
 			});
 		} catch (error) {
 			next(error);
 		}
 	},
 
-	getAnArticle: async (req, res, next) => {
+	getArticle: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
 
@@ -69,10 +90,17 @@ module.exports = {
 				});
 			}
 
+			let article = {
+				...result,
+				timeAgo: formatDistanceToNow(new Date(result.createdAt), {
+					addSuffix: true
+				})
+			};
+
 			return res.status(200).json({
 				status: true,
 				message: 'OK',
-				data: result
+				data: article
 			});
 		} catch (error) {
 			next(error);
@@ -96,18 +124,28 @@ module.exports = {
 				});
 			}
 
-			let newArticle = await prisma.article.update({
+			if (req.file) {
+				let strFile = req.file.buffer.toString('base64');
+
+				let { url } = await imagekit.upload({
+					fileName: Date.now() + path.extname(req.file.originalname),
+					file: strFile
+				});
+
+				result.imageUrl = url;
+			}
+
+			let article = { title, content, imageUrl: result.imageUrl };
+
+			let updatedArticle = await prisma.article.update({
 				where: { id },
-				data: {
-					title,
-					content
-				}
+				data: article
 			});
 
 			return res.status(201).json({
 				status: true,
-				message: 'Created',
-				data: newArticle
+				message: 'article updated',
+				data: updatedArticle
 			});
 		} catch (error) {
 			next(error);
@@ -136,7 +174,7 @@ module.exports = {
 
 			return res.status(200).json({
 				status: true,
-				message: 'OK',
+				message: 'article deleted',
 				data: article
 			});
 		} catch (error) {
