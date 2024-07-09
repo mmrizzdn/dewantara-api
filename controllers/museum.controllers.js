@@ -3,14 +3,6 @@ const prisma = new PrismaClient();
 const path = require('path');
 
 const imagekit = require('../libs/imagekit');
-const { is } = require('date-fns/locale');
-const {
-	isMonday,
-	isTuesday,
-	isWednesday,
-	isThursday,
-	isFriday
-} = require('date-fns');
 
 module.exports = {
 	addMuseum: async (req, res, next) => {

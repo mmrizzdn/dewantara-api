@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const { JWT_SECRET } = process.env;
 
+const { blacklistToken } = require('../middlewares/restrict');
+
 module.exports = {
 	login: async (req, res, next) => {
 		try {
@@ -49,19 +51,53 @@ module.exports = {
 				});
 			}
 
-			await prisma.admin.update({
+			loggedInAdmin = await prisma.admin.update({
 				where: { id: admin.id },
 				data: { isLoggedIn: true }
 			});
 
-			delete admin.password;
-			let token = jwt.sign({ admin }, JWT_SECRET, { expiresIn: '1h' });
+			delete loggedInAdmin.password;
+
+			let token = jwt.sign(loggedInAdmin, JWT_SECRET, {
+				expiresIn: '1h'
+			});
 
 			return res.status(201).json({
 				status: true,
 				message: 'login success',
-				data: { ...admin, token }
+				data: { ...loggedInAdmin, token }
 			});
 		} catch (error) {}
+	},
+
+	getAdminData: async (req, res, next) => {
+		try {
+			return res.status(200).json({
+				status: true,
+				message: 'OK',
+				data: { ...req.admin }
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
+	logout: async (req, res, next) => {
+		try {
+			await prisma.admin.update({
+				where: { id: req.admin.id },
+				data: { isLoggedIn: false }
+			});
+
+			await blacklistToken(req.token);
+
+			return res.status(200).json({
+				status: true,
+				message: 'logout success',
+				data: null
+			});
+		} catch (error) {
+			next(error);
+		}
 	}
 };

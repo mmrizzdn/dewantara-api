@@ -1,0 +1,368 @@
+openapi: 3.0.3
+info:
+  title: Dewantara API
+  version: 1.0.0
+  description: Dewantara API merupakan API untuk mengelola data-data dari Website Dewantara.
+  contact:
+    email: zoed.eldien15@gmail.com
+servers:
+  - url: http://localhost:3000/api/v1
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Autentikasi
+      summary: Login admin
+      description: Login admin dengan email dan password
+      requestBody:
+        $ref: '#/components/requestBodies/Login'
+      responses:
+        201:
+          $ref: '#/components/responses/Created'
+          data:
+            allOf:
+              - $ref: '#/components/schemas/Authentication'
+            
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    OK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: OK
+    Created:
+      description: Created
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: Created
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Bad Request
+              data:
+                type: string
+                example: null
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Unauthorized
+              data:
+                type: string
+                example: null
+    NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Not Found
+              data:
+                type: string
+                example: null
+    InternalServerError:
+      description: InternalServerError
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Internal Server Error
+              data:
+                type: string
+                example: null
+  schemas:
+    Authentication:
+      title: Authentication
+      type: object
+      properties:
+        email:
+          type: string
+          example: admin@dewantara.com
+        isLoggedIn:
+          type: boolean
+          example: true
+        imageUrl:
+          type: string
+          example: null
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Article:
+      title: Article
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini
+        content:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        imageUrl:
+          type: string
+          example: null
+        timeAgo:
+          type: string
+          example: 1 hour ago
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Puppet:
+      title: Puppet
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Puntadewa
+        description:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Event:
+      title: Event
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Pagelaran Wayang Kulit HARJASDA
+        startDate:
+          type: string
+          example: 2024-02-02T00:00:00.000Z
+        endDate:
+          type: string
+          example: 2024-02-02T00:00:00.000Z
+        location:
+          type: string
+          example: Sidoarjo
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Museum:
+      title: Museum
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Museum Wayang
+        about:
+          type: string
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        imageUrl:
+          type: string
+          example: https://ik.imagekit.io/madamiz/1720457263822_TAdoLNWiY.png
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Location:
+      title: Location
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        address:
+          type: string
+          example: Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah
+        regency:
+          type: string
+          example: Banyumas
+        province:
+          type: string
+          example: Jawa Tengah
+        museumId:
+          type: integer
+          example: 1
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    OperatingHour:
+      title: Operating Hour
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        isSunday:
+          type: boolean
+          example: true
+        isMonday:
+          type: boolean
+          example: true
+        isTuesday:
+          type: boolean
+          example: true
+        isWednesday:
+          type: boolean
+          example: true
+        isThursday:
+          type: boolean
+          example: true
+        isFriday:
+          type: boolean
+          example: true
+        isSaturday:
+          type: boolean
+          example: true
+        isNationalHoliday:
+          type: boolean
+          example: true
+        startTime:
+          type: string
+          example: 10.00
+        endTime:
+          type: string
+          example: 18.00
+        timezone:
+          type: string
+          example: WIB
+        museumId:
+          type: integer
+          example: 1
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Ticket:
+      title: Ticket
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        price:
+          type: number
+          example: 10000
+        type:
+          type: string
+          example: INDIVIDUAL
+        age:
+          type: string
+          example: ADULT
+        museumId:
+          type: integer
+          example: 1
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+    Collection:
+      title: Collection
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        imageUrl:
+          type: string
+          example: https://ik.imagekit.io/madamiz/1720457263822_TAdoLNWiY.png
+        createdAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          example: 2022-01-01T00:00:00.000Z
+  requestBodies:
+    Login:
+      description: Login
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                example: admin@dewantara.com
+              password:
+                type: string
+                example: admin123
