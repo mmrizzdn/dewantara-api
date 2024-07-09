@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const { image } = require('../libs/multer');
+const { restrict } = require('../middlewares/restrict');
 
 const {
 	addPuppet,
@@ -45,46 +46,46 @@ const {
 } = require('../controllers/museum.controllers');
 
 // puppets
-router.post('/puppets', image.single('file'), addPuppet);
+router.post('/puppets', restrict, image.single('file'), addPuppet);
 router.get('/puppets', getAllPuppets);
 router.get('/puppets/:id', getPuppet);
-router.put('/puppets/:id', image.single('file'), updatePuppet);
-router.delete('/puppets/:id', deletePuppet);
+router.put('/puppets/:id', restrict, image.single('file'), updatePuppet);
+router.delete('/puppets/:id', restrict, deletePuppet);
 
 // articles
-router.post('/articles', image.single('file'), postArticle);
+router.post('/articles', restrict, image.single('file'), postArticle);
 router.get('/articles', getAllArticles);
 router.get('/articles/:id', getArticle);
-router.put('/articles/:id', image.single('file'), updateArticle);
-router.delete('/articles/:id', deleteArticle);
+router.put('/articles/:id', restrict, image.single('file'), updateArticle);
+router.delete('/articles/:id', restrict, deleteArticle);
 
 // events
-router.post('/events', image.single('file'), postEvent);
+router.post('/events', restrict, image.single('file'), postEvent);
 router.get('/events', getAllEvents);
 router.get('/events/:id', getEvent);
-router.put('/events/:id', image.single('file'), updateEvent);
+router.put('/events/:id', restrict, image.single('file'), updateEvent);
 router.delete('/events/:id', deleteEvent);
 
 // museums
-router.post('/museums', image.single('file'), addMuseum);
+router.post('/museums', restrict, image.single('file'), addMuseum);
 router.get('/museums', getAllMuseums);
 router.get('/museums/:id', getMuseum);
-router.put('/museums/:id', image.single('file'), updateMuseum);
-router.delete('/museums/:id', deleteMuseum);
+router.put('/museums/:id', restrict, image.single('file'), updateMuseum);
+router.delete('/museums/:id', restrict, deleteMuseum);
 
 // museums - operating hours
-router.post('/operating_hours', addOperatingHour);
-router.put('/operating_hours/:id', updateOperatingHour);
-router.delete('/operating_hours/:id', deleteOperatingHour);
+router.post('/operating_hours', restrict, addOperatingHour);
+router.put('/operating_hours/:id', restrict, updateOperatingHour);
+router.delete('/operating_hours/:id', restrict, deleteOperatingHour);
 
 // museums - tickets
-router.post('/tickets', addTicket);
-router.put('/tickets/:id', updateTicket);
-router.delete('/tickets/:id', deleteTicket);
+router.post('/tickets', restrict, addTicket);
+router.put('/tickets/:id', restrict, updateTicket);
+router.delete('/tickets/:id', restrict, deleteTicket);
 
 // museums - collections
-router.post('/collections', image.array('file', 5), postCollections);
-router.put('/collections/:id', image.single('file'), updateCollection);
-router.delete('/collections/:id', deleteCollection);
+router.post('/collections', restrict, image.array('file', 5), postCollections);
+router.put('/collections/:id', restrict, image.single('file'), updateCollection);
+router.delete('/collections/:id', restrict, deleteCollection);
 
 module.exports = router;
