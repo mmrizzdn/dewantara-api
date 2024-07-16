@@ -30,8 +30,8 @@ model BlacklistedToken {
   id        Int      @id @default(autoincrement())
   token     String   @unique
   expiresAt DateTime
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("blacklisted_tokens")
 }
@@ -39,8 +39,8 @@ model BlacklistedToken {
 model Puppet {
   id          Int      @id @default(autoincrement())
   name        String
-  description String
-  imageUrl    String
+  description String?
+  imageUrl    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -61,16 +61,16 @@ model Event {
 }
 
 model Museum {
-  id            Int             @id @default(autoincrement())
-  name          String
-  about         String
-  imageUrl      String
-  Location      Location[]
-  OperatingHour OperatingHour[]
-  Ticket        Ticket[]
-  Collection    Collection[]
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  id              Int               @id @default(autoincrement())
+  name            String
+  about           String
+  imageUrl        String
+  Location        Location[]
+  OperationalHour OperationalHour[]
+  Ticket          Ticket[]
+  Collection      Collection[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
 
   @@map("museums")
 }
@@ -88,7 +88,7 @@ model Location {
   @@map("locations")
 }
 
-model OperatingHour {
+model OperationalHour {
   id                Int      @id @default(autoincrement())
   isSunday          Boolean
   isMonday          Boolean
@@ -106,18 +106,20 @@ model OperatingHour {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
-  @@map("operating_hours")
+  @@map("operational_hours")
 }
 
 model Ticket {
-  id        Int      @id @default(autoincrement())
-  price     Decimal  @default(0.0)
-  type      Type     @default(INDIVIDUAL)
-  age       Age      @default(ADULT)
-  museumId  Int
-  museum    Museum   @relation(fields: [museumId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  price      Decimal  @default(0.0)
+  isWeekdays Boolean  @default(true)
+  isWeekend  Boolean  @default(true)
+  type       Type     @default(INDIVIDUAL)
+  age        Age      @default(GENERAL)
+  museumId   Int
+  museum     Museum   @relation(fields: [museumId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("tickets")
 }
@@ -131,6 +133,7 @@ enum Age {
   CHILD
   STUDENT
   ADULT
+  GENERAL
 }
 
 model Collection {
@@ -145,12 +148,13 @@ model Collection {
 }
 
 model Article {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  imageUrl  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String
+  publication DateTime
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("articles")
 }

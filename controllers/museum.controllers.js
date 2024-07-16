@@ -62,7 +62,7 @@ module.exports = {
 			let results = await prisma.museum.findMany({
 				include: {
 					Location: true,
-					OperatingHour: true,
+					OperationalHour: true,
 					Ticket: true,
 					Collection: true
 				}
@@ -94,7 +94,7 @@ module.exports = {
 				where: { id },
 				include: {
 					Location: true,
-					OperatingHour: true,
+					OperationalHour: true,
 					Ticket: true,
 					Collection: true
 				}
@@ -185,7 +185,7 @@ module.exports = {
 				where: { museumId: id }
 			});
 
-			await prisma.operatingHour.deleteMany({
+			await prisma.operationalHour.deleteMany({
 				where: { museumId: id }
 			});
 
@@ -211,7 +211,7 @@ module.exports = {
 		}
 	},
 
-	addOperatingHour: async (req, res, next) => {
+	addOperationalHour: async (req, res, next) => {
 		try {
 			let museumId = Number(req.query.museum_id);
 
@@ -261,7 +261,7 @@ module.exports = {
 				});
 			}
 
-			let operatingHour = await prisma.operatingHour.create({
+			let operationalHour = await prisma.operationalHour.create({
 				data: {
 					isSunday: is_sunday,
 					isMonday: is_monday,
@@ -280,27 +280,27 @@ module.exports = {
 
 			return res.status(201).json({
 				status: true,
-				message: 'operating hour created',
-				data: operatingHour
+				message: 'operational hour created',
+				data: operationalHour
 			});
 		} catch (error) {
 			next(error);
 		}
 	},
 
-	updateOperatingHour: async (req, res, next) => {
+	updateOperationalHour: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
 			let museumId = Number(req.query.museum_id);
 
-			let result = await prisma.operatingHour.findUnique({
+			let result = await prisma.operationalHour.findUnique({
 				where: { id }
 			});
 
 			if (!result) {
 				return res.status(404).json({
 					status: false,
-					message: 'operating hour not found',
+					message: 'operational hour not found',
 					data: null
 				});
 			}
@@ -321,7 +321,7 @@ module.exports = {
 				return res.status(404).json({
 					status: false,
 					message:
-						'this operating hour does not belong to this museum',
+						'this operational hour does not belong to this museum',
 					data: null
 				});
 			}
@@ -380,7 +380,7 @@ module.exports = {
 				result.endTime = end_time;
 			}
 
-			let operatingHour = {
+			let operationalHour = {
 				isSunday: result.isSunday,
 				isMonday: result.isMonday,
 				isTuesday: result.isTuesday,
@@ -394,34 +394,34 @@ module.exports = {
 				timezone
 			};
 
-			updatedOperatingHour = await prisma.operatingHour.update({
+			updatedOperationalHour = await prisma.operationalHour.update({
 				where: { id, museumId },
-				data: operatingHour
+				data: operationalHour
 			});
 
 			return res.status(200).json({
 				status: true,
-				message: 'operating hour updated',
-				data: updatedOperatingHour
+				message: 'operational hour updated',
+				data: updatedOperationalHour
 			});
 		} catch (error) {
 			next(error);
 		}
 	},
 
-	deleteOperatingHour: async (req, res, next) => {
+	deleteOperationalHour: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
 			let museumId = Number(req.query.museum_id);
 
-			let result = await prisma.operatingHour.findUnique({
+			let result = await prisma.operationalHour.findUnique({
 				where: { id }
 			});
 
 			if (!result) {
 				return res.status(404).json({
 					status: false,
-					message: 'operating hour not found',
+					message: 'operational hour not found',
 					data: null
 				});
 			}
@@ -442,19 +442,19 @@ module.exports = {
 				return res.status(404).json({
 					status: false,
 					message:
-						'this operating hour does not belong to this museum',
+						'this operational hour does not belong to this museum',
 					data: null
 				});
 			}
 
-			let operatingHour = await prisma.operatingHour.delete({
+			let operationalHour = await prisma.operationalHour.delete({
 				where: { id, museumId }
 			});
 
 			return res.status(200).json({
 				status: true,
-				message: 'operating hour deleted',
-				data: operatingHour
+				message: 'operational hour deleted',
+				data: operationalHour
 			});
 		} catch (error) {
 			next(error);

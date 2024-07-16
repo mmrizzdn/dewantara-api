@@ -34,9 +34,9 @@ const {
 	getMuseum,
 	updateMuseum,
 	deleteMuseum,
-	addOperatingHour,
-	updateOperatingHour,
-	deleteOperatingHour,
+	addOperationalHour,
+	updateOperationalHour,
+	deleteOperationalHour,
 	addTicket,
 	updateTicket,
 	deleteTicket,
@@ -73,10 +73,10 @@ router.get('/museums/:id', getMuseum);
 router.put('/museums/:id', restrict, image.single('file'), updateMuseum);
 router.delete('/museums/:id', restrict, deleteMuseum);
 
-// museums - operating hours
-router.post('/operating_hours', restrict, addOperatingHour);
-router.put('/operating_hours/:id', restrict, updateOperatingHour);
-router.delete('/operating_hours/:id', restrict, deleteOperatingHour);
+// museums - operational hours
+router.post('/operational_hours', restrict, addOperationalHour);
+router.put('/operational_hours/:id', restrict, updateOperationalHour);
+router.delete('/operational_hours/:id', restrict, deleteOperationalHour);
 
 // museums - tickets
 router.post('/tickets', restrict, addTicket);

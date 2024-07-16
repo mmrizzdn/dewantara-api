@@ -1,0 +1,44 @@
+[
+	{
+		"name": "Pagelaran Wayang Kulit HARJASDA",
+		"startDate": "2024-02-03T00:00:00.000Z",
+		"endDate": "2024-02-03T00:00:00.000Z",
+		"location": "Sidoarjo",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531471133_QCv0ezFyp.png"
+	},
+	{
+		"name": "Festival Wayang Orang Indonesia 2023",
+		"startDate": "2024-10-18T00:00:00.000Z",
+		"endDate": "2024-10-21T00:00:00.000Z",
+		"location": "Semarang",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531527618_5KJB38wSO.png"
+	},
+	{
+		"name": "Spesial Pagelaran Wayang Jawa Timur",
+		"startDate": "2024-08-26T00:00:00.000Z",
+		"endDate": "2024-08-27T00:00:00.000Z",
+		"location": "Semarang",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531614438_S7hx7NMSJ.png"
+	},
+	{
+		"name": "Pesta Wayang 2023 - “Mewayang Hayu Eksistensi & Konservasi”",
+		"startDate": "2024-02-03T00:00:00.000Z",
+		"endDate": "2024-02-03T00:00:00.000Z",
+		"location": "Semarang",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531779716_dh7Gl8Bnu.png"
+	},
+	{
+		"name": "Pesta Rakyat Hari Bhayangkara ke-77",
+		"startDate": "2024-07-01T00:00:00.000Z",
+		"endDate": "2024-07-01T00:00:00.000Z",
+		"location": "Bali",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531823637_xXyPY77cg.png"
+	},
+	{
+		"name": "Pesta Rakyat Jawa Barat Pagelaran Seni Budaya Siliwangi",
+		"startDate": "2024-03-21T00:00:00.000Z",
+		"endDate": "2024-03-21T00:00:00.000Z",
+		"location": "Bandung",
+		"imageUrl": "https://ik.imagekit.io/madamiz/1720531872350_x-w2YG280.png"
+	}
+]
