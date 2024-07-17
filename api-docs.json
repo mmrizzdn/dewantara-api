@@ -1,0 +1,3048 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2024-07-16T19:46:35.647Z",
+	"__export_source": "insomnia.desktop.app:v8.6.1",
+	"resources": [
+		{
+			"_id": "req_9a4541921ceb4d869965b72106ccdb5d",
+			"parentId": "fld_ad9523ca452044adb8413926ce56af89",
+			"modified": 1720440016493,
+			"created": 1720439608581,
+			"url": "{{ _.LOCALHOST }}auth/login",
+			"name": "Login",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"admin@dewantara.com\",\n\t\"password\": \"admin123\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/9.3.2" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720439608581,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_ad9523ca452044adb8413926ce56af89",
+			"parentId": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"modified": 1720439624961,
+			"created": 1720439592159,
+			"name": "Authentication - Admin",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362429746,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"parentId": "wrk_a26058b6c6e84828bc4f6afa8a6423f4",
+			"modified": 1720273640801,
+			"created": 1715362401261,
+			"name": "Localhost",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362401261,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_a26058b6c6e84828bc4f6afa8a6423f4",
+			"parentId": null,
+			"modified": 1720447719619,
+			"created": 1720447719619,
+			"name": "Dewantara",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "req_231ee1c4f7cf46c18d30e75c802629bb",
+			"parentId": "fld_ad9523ca452044adb8413926ce56af89",
+			"modified": 1721159035675,
+			"created": 1720448745887,
+			"url": "{{ _.LOCALHOST }}auth/admin_data",
+			"name": "Get Admin Data",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/9.3.2" }],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTE2VDE4OjAxOjE0LjUxMloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTE2VDE5OjQzOjMyLjcwNFoiLCJpYXQiOjE3MjExNTkwMTIsImV4cCI6MTcyMTE2MjYxMn0.U5xWErQ1hlCMuvY46qDiGybpKiC6cVoaC_RzREqretQ"
+			},
+			"metaSortKey": -1720437791803,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2409ad1403ba46108f589000598d1a12",
+			"parentId": "fld_ad9523ca452044adb8413926ce56af89",
+			"modified": 1721159041042,
+			"created": 1720449710887,
+			"url": "{{ _.LOCALHOST }}auth/logout",
+			"name": "Logout",
+			"description": "",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/9.3.2" }],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTE2VDE4OjAxOjE0LjUxMloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTE2VDE5OjQzOjMyLjcwNFoiLCJpYXQiOjE3MjExNTkwMTIsImV4cCI6MTcyMTE2MjYxMn0.U5xWErQ1hlCMuvY46qDiGybpKiC6cVoaC_RzREqretQ"
+			},
+			"metaSortKey": -1720436883414,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5e6f786f992944b4a63a201fce6d8f7f",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1720456527557,
+			"created": 1715207280081,
+			"url": "{{ _.LOCALHOST }}articles",
+			"name": "Post Article",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "title",
+						"value": "Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "content",
+						"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non congue ante. Proin at lectus purus. Integer quis tortor ut turpis sodales tincidunt. Proin quis facilisis libero. Duis mattis eleifend bibendum. Mauris accumsan ullamcorper dui quis porttitor. Praesent laoreet, sapien sit amet viverra lobortis, lorem nisi elementum orci, in luctus enim ligula et nunc.",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-57-21.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780858,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_3ca25208c3824becbd7f625170cab09a",
+			"parentId": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"modified": 1720324116307,
+			"created": 1720273752801,
+			"name": "Article",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362429646,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_cb7963fa1f884ab7835a695f60f4ff0d",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1721154965577,
+			"created": 1715364363193,
+			"url": "{{ _.LOCALHOST }}articles/all",
+			"name": "Get All Articles",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_dbbf5076b5dc4441a6139a993ace1f36",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1721157759938,
+			"created": 1721156396374,
+			"url": "{{ _.LOCALHOST }}articles",
+			"name": "Get Articles by Pagination & Searching",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [
+				{
+					"id": "pair_e34289b528c7441f96ab6ac260eb3a6f",
+					"name": "limit",
+					"value": "6",
+					"description": ""
+				},
+				{
+					"id": "pair_b8a0cb8b6e2a48748e958bddde6c4733",
+					"name": "page",
+					"value": "1",
+					"description": ""
+				},
+				{
+					"id": "pair_fc5d3ec9191c44a2b0585344e968005a",
+					"name": "search",
+					"value": "melacak",
+					"description": "",
+					"disabled": true
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780801.75,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f3a0f57175ed4e47a22ccb86f7e658da",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1720321579062,
+			"created": 1715365762071,
+			"url": "{{ _.LOCALHOST}}articles/2",
+			"name": "Get Article",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780783,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f3b5efd429c647d1842a8a5f7a38f8ce",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1720274416107,
+			"created": 1720273322835,
+			"url": "{{ _.LOCALHOST }}articles/3",
+			"name": "Update Article",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "title",
+						"value": "Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_e2b0abffacfd46ba85b0a0191692b76c",
+						"name": "content",
+						"value": "Nulla ornare est vitae vulputate hendrerit. Aliquam a iaculis sem. Nam ac convallis dolor. Morbi fermentum justo arcu, ut maximus est porttitor non. Integer ac turpis ut ante luctus vehicula. Maecenas sed lorem pellentesque, convallis ante et, posuere justo. Pellentesque eget feugiat sapien. Maecenas ullamcorper semper dolor, ac condimentum ligula efficitur quis. Suspendisse sit amet augue sed justo malesuada iaculis. Vestibulum ac eros nisi. Donec velit justo, pharetra eget turpis eu, auctor suscipit odio. Proin eget tristique risus. Etiam in pharetra mauris. Quisque mollis non ipsum sit amet elementum. Duis porta dignissim facilisis. Sed at mi in elit tempor mollis.",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_664f89a4581743afb098623537e10c20",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 44.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780758,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7b98abf2af3a46cabedfa41d3894a60c",
+			"parentId": "fld_3ca25208c3824becbd7f625170cab09a",
+			"modified": 1720324788949,
+			"created": 1715367882670,
+			"url": "{{ _.LOCALHOST }}articles/3",
+			"name": "Delete Article",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b18d1647e16d479b9561913ebb4b19bf",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1720456877096,
+			"created": 1720324112447,
+			"url": "{{ _.LOCALHOST }}puppets",
+			"name": "Add Puppet",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Puntadewa",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "description",
+						"value": "Puntadewa atau Yudistira adalah salah satu tokoh sentral dalam epik Mahabharata. Kisahnya dimulai dengan kelahirannya sebagai putra tertua Pandu dan Kunti. Sejak kecil, Yudistira telah menunjukkan sifat-sifat kebijaksanaan, keadilan, dan kesetiaan yang luar biasa.\\n\\nDalam perjalanan hidupnya, Yudistira menghadapi banyak cobaan dan ujian. Salah satu momen penting dalam kehidupannya adalah permainan dadu yang diatur oleh Duryodana, saudara sepupunya yang iri padanya. Dalam permainan dadu itu, Yudistira kehilangan segalanya, termasuk tanah, harta, dan bahkan saudara-saudaranya. Akhirnya, ia bahkan mempertaruhkan dirinya sendiri dan Kunti.",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-57-21.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780858,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"parentId": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"modified": 1720324112445,
+			"created": 1720324112445,
+			"name": "Puppet",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362422549.75,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_989d3384d41543e18391d853df734d9f",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1721154728207,
+			"created": 1720324112450,
+			"url": "{{ _.LOCALHOST }}puppets/all",
+			"name": "Get All Puppet",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_bf53c95c232846df893e83b5be8e78eb",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1721157937453,
+			"created": 1721153775714,
+			"url": "{{ _.LOCALHOST }}puppets",
+			"name": "Get Puppets by Pagination & Searching",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [
+				{
+					"id": "pair_9f66c2a968cc4a288c016614919d16b0",
+					"name": "page",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				},
+				{
+					"id": "pair_300fc12aa8bf49d28c17b005a963a5d4",
+					"name": "limit",
+					"value": "16",
+					"description": "",
+					"disabled": false
+				},
+				{
+					"id": "pair_c6bf2dee0f92486eb16094bc860c5148",
+					"name": "search",
+					"value": "bima",
+					"description": "",
+					"disabled": true
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780795.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f3e90fa8a85a4d42a90b8efe6c2174ab",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1720324716206,
+			"created": 1720324112451,
+			"url": "{{ _.LOCALHOST}}puppets/1",
+			"name": "Get Puppet",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780783,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_df4249dc906a4b21a39c48be9ac6b3e4",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1720325229896,
+			"created": 1720324682220,
+			"url": "{{ _.LOCALHOST }}puppets/1",
+			"name": "Update Puppet",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_c889bfce8c464595badd18267ca393f9",
+						"name": "name",
+						"value": "Puntadewa",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "description",
+						"value": "Puntadewa atau Yudistira adalah salah satu tokoh sentral dalam epik Mahabharata. Kisahnya dimulai dengan kelahirannya sebagai putra tertua Pandu dan Kunti. Sejak kecil, Yudistira telah menunjukkan sifat-sifat kebijaksanaan, keadilan, dan kesetiaan yang luar biasa./n/nDalam perjalanan hidupnya, Yudistira menghadapi banyak cobaan dan ujian. Salah satu momen penting dalam kehidupannya adalah permainan dadu yang diatur oleh Duryodana, saudara sepupunya yang iri padanya. Dalam permainan dadu itu, Yudistira kehilangan segalanya, termasuk tanah, harta, dan bahkan saudara-saudaranya. Akhirnya, ia bahkan mempertaruhkan dirinya sendiri dan Kunti.\\n\\nMeskipun demikian, Yudistira memenangkan kembali segalanya dalam permainan dadu terakhir. Namun, kemenangan ini tidak membawa kebahagiaan, karena ia menyadari bahwa harga kemenangan tersebut sangat mahal, dan permainan dadu itu merupakan awal dari perang besar di Kurukshetra.\\n\\nSebagai pemimpin Pandawa, Yudistira memainkan peran yang sangat penting dalam perang tersebut. Meskipun merasa terpukul oleh kenyataan bahwa perang ini akan menyebabkan banyak penderitaan, Yudistira mengambil tanggung jawabnya sebagai pemimpin dengan penuh keberanian dan keteguhan hati.\\n\\nDi tengah-tengah pertempuran, Yudistira juga menghadapi ujian moral ketika ia harus membunuh Drona, guru besar Pandawa dan Kaurawa, yang bersekutu dengan pihak Kaurawa. Meskipun berat hati, Yudistira melaksanakan tugasnya demi kepentingan yang lebih besar. Pada akhirnya, perang berakhir dengan kemenangan bagi Pandawa, meskipun banyak kerugian dan penderitaan yang terjadi. Yudistira kemudian memerintah dengan bijaksana sebagai raja Hastinapura, memimpin kerajaan dengan keadilan dan kebajikan.\\n\\nKisah Yudistira dalam cerita Mahabharata menggambarkan perjuangan seorang pemimpin yang harus menghadapi berbagai ujian dan tantangan dalam menjalankan tanggung jawabnya. Meskipun mengalami penderitaan dan kesulitan, Yudistira tetap setia pada nilai-nilai kebaikan dan kebenaran, menjadi contoh yang inspiratif bagi banyak orang.",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_2f16aa54522843948bde17f20e486edd",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\yudistira-character-traditional-puppet-show-wayang-kulit-java-indonesia-73150219 1.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780770.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e528b3495d254afca6b8682bfbe640bc",
+			"parentId": "fld_4870e47e387c445a8bbe5b6ae2551470",
+			"modified": 1720327048067,
+			"created": 1720324112453,
+			"url": "{{ _.LOCALHOST }}puppets/1",
+			"name": "Delete Puppet",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ddb01c14e7ce45e8bdb202b629e41fc7",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1720457008683,
+			"created": 1720417264103,
+			"url": "{{ _.LOCALHOST }}events",
+			"name": "Post Event",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Pagelaran Wayang Kulit HARJASDA",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "start_date",
+						"value": "2024-02-02",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "end_date",
+						"value": "2024-02-03",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Image.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "location",
+						"value": "Sidoarjo",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-57-21.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780933,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"parentId": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"modified": 1720274559672,
+			"created": 1720273860012,
+			"name": "Event",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362415453.5,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_77d832b407964383ad82d657668da72a",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1721154976952,
+			"created": 1720273860015,
+			"url": "{{ _.LOCALHOST }}events/all",
+			"name": "Get All Events",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780833,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1c4b7d8be2294779a72c46d9e0096a9c",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1721158843806,
+			"created": 1721156490648,
+			"url": "{{ _.LOCALHOST }}events",
+			"name": "Get Events by Pagination & Searching",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [
+				{
+					"id": "pair_3bd7ebcd6ff34e6c860b675e57192674",
+					"name": "limit",
+					"value": "8",
+					"description": ""
+				},
+				{
+					"id": "pair_a8dd295487e14297a64002a8bd87f796",
+					"name": "page",
+					"value": "1",
+					"description": ""
+				},
+				{
+					"id": "pair_22888398d0044fc8907fa713f72aeebe",
+					"name": "search",
+					"value": "sidoarjo",
+					"description": "",
+					"disabled": true
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780826.75,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c92367fc1cd84e42af2104825f77cd6b",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1720275292024,
+			"created": 1720273860016,
+			"url": "{{ _.LOCALHOST}}events/1",
+			"name": "Get Event",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780820.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8be9686c633b4c909ff2e5798bb2680c",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1720325529636,
+			"created": 1720275063102,
+			"url": "{{ _.LOCALHOST }}events/1",
+			"name": "Update Event",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_697ad460828349409fc3af00b93883d7",
+						"name": "name",
+						"value": "Festival Wayang Orang Indonesia 2023",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "start_date",
+						"value": "2024-08-22",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_343b4ca6059d4446bf60386d8163d6ca",
+						"name": "end_date",
+						"value": "2024-08-21",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_f8c59dd1fb894a689f8a713b059dd162",
+						"name": "location",
+						"value": "Semarang",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_4a0d733e5b7a49e49f357278b421cadc",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": true,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 42.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0e679afdaffc40849442931497d100e9",
+			"parentId": "fld_208749910b144f298eb1fa82a1fdb55a",
+			"modified": 1720325760625,
+			"created": 1720273860018,
+			"url": "{{ _.LOCALHOST }}events/4",
+			"name": "Delete Event",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8c14a4d426504dd5ab60be9ecc3ff507",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720457262724,
+			"created": 1720273860014,
+			"url": "{{ _.LOCALHOST }}museums",
+			"name": "Add Museum",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Wayang Banyumas",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "about",
+						"value": "Bangunan Museum Wayang dulunya merupakan sebuah gereja tua yang didirikan oleh VOC pada tahun 1640 dengan nama 'de oude Hollandsche Kerk'. Kemudian, gedung tersebut berfungsi sebagai tempat peribadatan penduduk sipil dan tentara Belanda yang tinggal di Batavia, Jakarta sampai tahun 1732. Lalu, pada tahun 1733, gereja tersebut berubah nama menjadi \"de nieuwe Hollandsche Kerk\" yang berdiri sampai tahun 1808. Kemudian, bangunan tersebut hancur akibat gempa bumi. \n\nSetelah dibedah, bangunan itu diserahkan kepada Stichting Oud Batavia untuk dijadikan museum yang diberi nama de Oude Bataviasche Museum atau Museum Batavia Lama.\n\nDua belas tahun setelah proklamasi kemerdekaan 1945, tepatnya pada tahun 1957, pemerintah menyerahkan gedung Museum Batavia Lama kepada Lembaga Kebudayaan Indonesia. Nama bangunan itu Museum Jakarta Lama, yang kemudian berubah menjadi Museum Jakarta pada 1 Agustus 1960.\n\nPada tahun 1968, Museum Jakarta kemudian diserahkan kepada Pemerintah Provinsi DKI Jakarta. Lalu, Museum Jakarta berubah menjadi Museum Wayang yang diresmikan pada tanggal 13 Agustus 1975 oleh Ali Sadikin, Gubernur DKI Jakarta pada waktu itu.",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "2024-02-03",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-57-21.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "address",
+						"value": "Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "regency",
+						"value": "Banyumas",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Screenshot_2024-02-07-15-15-51-40_1c337646f29875672b5a61192b9010f9 1.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_ac6c778f43bb46c8a613350520f905b9",
+						"name": "province",
+						"value": "Jawa Tengah",
+						"description": "",
+						"disabled": false
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780958,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"parentId": "fld_dd28290ed3574593aad846d32f7f3df0",
+			"modified": 1720417264099,
+			"created": 1720417264099,
+			"name": "Museum",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362408357.25,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_dff8b18d1ffd4021811149655f1e3794",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1721154986863,
+			"created": 1720417264106,
+			"url": "{{ _.LOCALHOST }}museums/all",
+			"name": "Get All Museums",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780833,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_daf65f94064f419382c269e426fd2f54",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1721158412997,
+			"created": 1721157068828,
+			"url": "{{ _.LOCALHOST }}museums",
+			"name": "Get Museums by Pagination & Searching",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [
+				{
+					"id": "pair_54cf7015344f4f6ea3014d13322db247",
+					"name": "page",
+					"value": "1",
+					"description": ""
+				},
+				{
+					"id": "pair_ff27a446f6a64c6fb52e843720769c54",
+					"name": "limit",
+					"value": "6",
+					"description": ""
+				},
+				{
+					"id": "pair_3e9652c4c8f64b118f89546b5398c1a8",
+					"name": "search",
+					"value": "jakarta",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780829.875,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_bbe7869f39664237a9cc54b7fc851ba0",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1721158291604,
+			"created": 1720417264108,
+			"url": "{{ _.LOCALHOST}}museums/4",
+			"name": "Get Museum",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780820.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2b419657e07c40b9b9c3ad091db42b28",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720436954495,
+			"created": 1720436831485,
+			"url": "{{ _.LOCALHOST }}museums/1",
+			"name": "Update Museum",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Wayang Jakarta",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "about",
+						"value": "Bangunan Museum Wayang dulunya merupakan sebuah gereja tua yang didirikan oleh VOC pada tahun 1640 dengan nama 'de oude Hollandsche Kerk'. Kemudian, gedung tersebut berfungsi sebagai tempat peribadatan penduduk sipil dan tentara Belanda yang tinggal di Batavia, Jakarta sampai tahun 1732. Lalu, pada tahun 1733, gereja tersebut berubah nama menjadi \"de nieuwe Hollandsche Kerk\" yang berdiri sampai tahun 1808. Kemudian, bangunan tersebut hancur akibat gempa bumi. \n\nSetelah dibedah, bangunan itu diserahkan kepada Stichting Oud Batavia untuk dijadikan museum yang diberi nama de Oude Bataviasche Museum atau Museum Batavia Lama.\n\nDua belas tahun setelah proklamasi kemerdekaan 1945, tepatnya pada tahun 1957, pemerintah menyerahkan gedung Museum Batavia Lama kepada Lembaga Kebudayaan Indonesia. Nama bangunan itu Museum Jakarta Lama, yang kemudian berubah menjadi Museum Jakarta pada 1 Agustus 1960.\n\nPada tahun 1968, Museum Jakarta kemudian diserahkan kepada Pemerintah Provinsi DKI Jakarta. Lalu, Museum Jakarta berubah menjadi Museum Wayang yang diresmikan pada tanggal 13 Agustus 1975 oleh Ali Sadikin, Gubernur DKI Jakarta pada waktu itu.",
+						"description": "",
+						"disabled": true,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "2024-02-03",
+						"description": "",
+						"disabled": true,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 13.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "address",
+						"value": "Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "regency",
+						"value": "Banyumas",
+						"description": "",
+						"disabled": true,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Screenshot_2024-02-07-15-15-51-40_1c337646f29875672b5a61192b9010f9 1.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_ac6c778f43bb46c8a613350520f905b9",
+						"name": "province",
+						"value": "Jawa Tengah",
+						"description": "",
+						"disabled": true
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780818.5469,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2880bc62cade4566b6865c3a2034cd15",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720437169588,
+			"created": 1720437146148,
+			"url": "{{ _.LOCALHOST }}museums/1",
+			"name": "Delete Museum",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720273780817.5703,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_079b7567315c455ab725475d8b143409",
+			"parentId": "fld_931a7b98b0774107864fed5729a5effe",
+			"modified": 1720457649211,
+			"created": 1720427954803,
+			"url": "{{ _.LOCALHOST }}operating_hours",
+			"name": "Add Operating Hour",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"is_sunday\": false,\n\t\"is_monday\": false,\n\t\"is_tuesday\": false,\n\t\"is_wednesday\": false,\n\t\"is_thursday\": false,\n\t\"is_friday\": true,\n\t\"is_saturday\": false,\n\t\"is_national_holiday\": false,\n\t\"start_time\": \"07.00\",\n\t\"end_time\": \"11.30\",\n\t\"timezone\": \"WIB\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435905876,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_931a7b98b0774107864fed5729a5effe",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720435903283,
+			"created": 1720435889654,
+			"name": "Operating Hour",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780816.5938,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_d5db832751434bcb94b4c3dbf6a32f4f",
+			"parentId": "fld_931a7b98b0774107864fed5729a5effe",
+			"modified": 1720435908323,
+			"created": 1720433563528,
+			"url": "{{ _.LOCALHOST }}operating_hours/2",
+			"name": "Update Operating Hour",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"start_time\": \"08.00\",\n\t\"timezone\": \"WITA\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435905776,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a1be806e959049e89aa12e54a34451d7",
+			"parentId": "fld_931a7b98b0774107864fed5729a5effe",
+			"modified": 1720435911903,
+			"created": 1720433961626,
+			"url": "{{ _.LOCALHOST }}operating_hours/2",
+			"name": "Delete Operating Hour",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435905676,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_927387301ab2459fbcf60c03737f69d6",
+			"parentId": "fld_1b6edc566a034cb9a441b969c3cee8ba",
+			"modified": 1720457942895,
+			"created": 1720421331480,
+			"url": "{{ _.LOCALHOST }}tickets",
+			"name": "Add Ticket",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"price\": 2000,\n\t\"type\": \"INDIVIDUAL\",\n\t\"age\": \"ADULT\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435943889,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_1b6edc566a034cb9a441b969c3cee8ba",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720435941889,
+			"created": 1720435926742,
+			"name": "Ticket",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780814.0547,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_f0d1c5bf25974f3e96e1374604014cbf",
+			"parentId": "fld_1b6edc566a034cb9a441b969c3cee8ba",
+			"modified": 1720436322456,
+			"created": 1720436156074,
+			"url": "{{ _.LOCALHOST }}tickets/1",
+			"name": "Update Ticket",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"age\": \"STUDENT\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435924882.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7c3b77bc36d14f61b9155a0f1a79ad8a",
+			"parentId": "fld_1b6edc566a034cb9a441b969c3cee8ba",
+			"modified": 1720436369553,
+			"created": 1720436357472,
+			"url": "{{ _.LOCALHOST }}tickets/1",
+			"name": "Delete Ticket",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435915379.25,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1ccf1786f43949cf9321aade829afb6f",
+			"parentId": "fld_c262ad1544914516b03c10f41686a7d2",
+			"modified": 1720457993239,
+			"created": 1720422606911,
+			"url": "{{ _.LOCALHOST }}collections",
+			"name": "Post Collections",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_6e03ecef698a46ffa9534dcadb792b42",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-57-21.png"
+					},
+					{
+						"id": "pair_dfeef9ca5739414fb56e9dc529e83217",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Pictures/Screenshots/Screenshot from 2024-06-23 19-56-58.png"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435975025,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_c262ad1544914516b03c10f41686a7d2",
+			"parentId": "fld_2430e8aa707f4c908df3ee8bf29a8209",
+			"modified": 1720435972323,
+			"created": 1720435961942,
+			"name": "Collection",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780809.5625,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_f37b50c978f04195bd0a98b9c14ca8b8",
+			"parentId": "fld_c262ad1544914516b03c10f41686a7d2",
+			"modified": 1720436482852,
+			"created": 1720436410566,
+			"url": "{{ _.LOCALHOST }}collections/1",
+			"name": "Update Collections",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_6e03ecef698a46ffa9534dcadb792b42",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 12.png"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435959457,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b9d029e130454b45a5f398a9ca4afdfd",
+			"parentId": "fld_c262ad1544914516b03c10f41686a7d2",
+			"modified": 1720437352842,
+			"created": 1720437336549,
+			"url": "{{ _.LOCALHOST }}collections/7",
+			"name": "Delete Collections",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435951673,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c4c3b5d2f534400ea05de775a39981f1",
+			"parentId": "fld_aeca331acf114a36bbb65822093005a6",
+			"modified": 1720529452566,
+			"created": 1720529414425,
+			"url": "{{ _.RAILWAY }}auth/login",
+			"name": "Login",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"admin@dewantara.com\",\n\t\"password\": \"admin123\"\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/9.3.2" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720439608581,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_aeca331acf114a36bbb65822093005a6",
+			"parentId": "fld_88c22af3a2104349849e5cc3da1de130",
+			"modified": 1720529414423,
+			"created": 1720529414423,
+			"name": "Authentication - Admin",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362429746,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_88c22af3a2104349849e5cc3da1de130",
+			"parentId": "wrk_a26058b6c6e84828bc4f6afa8a6423f4",
+			"modified": 1720529427019,
+			"created": 1720529414312,
+			"name": "Railway",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": {},
+			"metaSortKey": -1715362401211,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_87230544e97d430e8170224bc3629cc5",
+			"parentId": "fld_aeca331acf114a36bbb65822093005a6",
+			"modified": 1720530941589,
+			"created": 1720529414428,
+			"url": "{{ _.RAILWAY }}auth/admin_data",
+			"name": "Get Admin Data",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/9.3.2" }],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjE1OjMwLjQ0NFoiLCJpYXQiOjE3MjA1MzA5MzAsImV4cCI6MTcyMDUzNDUzMH0.w2WfhAF3KiD8ezBz970GcRPd0lbnDuyQBTdXXcvsmMk"
+			},
+			"metaSortKey": -1720437791803,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8faecdf07f8a4ca5af088e88f6a02a89",
+			"parentId": "fld_aeca331acf114a36bbb65822093005a6",
+			"modified": 1720530949569,
+			"created": 1720529414431,
+			"url": "{{ _.RAILWAY }}auth/logout",
+			"name": "Logout",
+			"description": "",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/9.3.2" }],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjE1OjMwLjQ0NFoiLCJpYXQiOjE3MjA1MzA5MzAsImV4cCI6MTcyMDUzNDUzMH0.w2WfhAF3KiD8ezBz970GcRPd0lbnDuyQBTdXXcvsmMk"
+			},
+			"metaSortKey": -1720436883414,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4173a80cd86f481b800bb99551afc46c",
+			"parentId": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"modified": 1720532175069,
+			"created": 1720529414318,
+			"url": "{{ _.RAILWAY }}articles",
+			"name": "Post Article",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "title",
+						"value": "Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "content",
+						"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non congue ante. Proin at lectus purus. Integer quis tortor ut turpis sodales tincidunt. Proin quis facilisis libero. Duis mattis eleifend bibendum. Mauris accumsan ullamcorper dui quis porttitor. Praesent laoreet, sapien sit amet viverra lobortis, lorem nisi elementum orci, in luctus enim ligula et nunc.",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/image 42.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720273780858,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"parentId": "fld_88c22af3a2104349849e5cc3da1de130",
+			"modified": 1720529414316,
+			"created": 1720529414316,
+			"name": "Article",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362429646,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_0fdc62e679644ee09e0371e9e9df38c6",
+			"parentId": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"modified": 1720529482690,
+			"created": 1720529414322,
+			"url": "{{ _.RAILWAY }}articles",
+			"name": "Get All Articles",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8c8f2c05968c46188290b8efe77cf5e6",
+			"parentId": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"modified": 1720532355508,
+			"created": 1720529414325,
+			"url": "{{ _.RAILWAY }}articles/1",
+			"name": "Get Article",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780783,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1dca2a34d25f4e2f8aac56606632ea81",
+			"parentId": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"modified": 1720529514295,
+			"created": 1720529414329,
+			"url": "{{ _.RAILWAY }}articles/3",
+			"name": "Update Article",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "title",
+						"value": "Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_e2b0abffacfd46ba85b0a0191692b76c",
+						"name": "content",
+						"value": "Nulla ornare est vitae vulputate hendrerit. Aliquam a iaculis sem. Nam ac convallis dolor. Morbi fermentum justo arcu, ut maximus est porttitor non. Integer ac turpis ut ante luctus vehicula. Maecenas sed lorem pellentesque, convallis ante et, posuere justo. Pellentesque eget feugiat sapien. Maecenas ullamcorper semper dolor, ac condimentum ligula efficitur quis. Suspendisse sit amet augue sed justo malesuada iaculis. Vestibulum ac eros nisi. Donec velit justo, pharetra eget turpis eu, auctor suscipit odio. Proin eget tristique risus. Etiam in pharetra mauris. Quisque mollis non ipsum sit amet elementum. Duis porta dignissim facilisis. Sed at mi in elit tempor mollis.",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_664f89a4581743afb098623537e10c20",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 44.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780758,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_29fb46b9216e4c70b9c3e5aa1135719d",
+			"parentId": "fld_18ccdc46e81141d9beb99ae6c6b26392",
+			"modified": 1720529521915,
+			"created": 1720529414327,
+			"url": "{{ _.RAILWAY }}articles/3",
+			"name": "Delete Article",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1a61deabe95e4d2bbfc758ba80f2cc57",
+			"parentId": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"modified": 1720532308572,
+			"created": 1720529414354,
+			"url": "{{ _.RAILWAY }}puppets",
+			"name": "Add Puppet",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Puntadewa",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "description",
+						"value": "Puntadewa atau Yudistira adalah salah satu tokoh sentral dalam epik Mahabharata. Kisahnya dimulai dengan kelahirannya sebagai putra tertua Pandu dan Kunti. Sejak kecil, Yudistira telah menunjukkan sifat-sifat kebijaksanaan, keadilan, dan kesetiaan yang luar biasa.\n\nDalam perjalanan hidupnya, Yudistira menghadapi banyak cobaan dan ujian. Salah satu momen penting dalam kehidupannya adalah permainan dadu yang diatur oleh Duryodana, saudara sepupunya yang iri padanya. Dalam permainan dadu itu, Yudistira kehilangan segalanya, termasuk tanah, harta, dan bahkan saudara-saudaranya. Akhirnya, ia bahkan mempertaruhkan dirinya sendiri dan Kunti.\n\nMeskipun demikian, Yudistira memenangkan kembali segalanya dalam permainan dadu terakhir. Namun, kemenangan ini tidak membawa kebahagiaan, karena ia menyadari bahwa harga kemenangan tersebut sangat mahal, dan permainan dadu itu merupakan awal dari perang besar di Kurukshetra.\n\nSebagai pemimpin Pandawa, Yudistira memainkan peran yang sangat penting dalam perang tersebut. Meskipun merasa terpukul oleh kenyataan bahwa perang ini akan menyebabkan banyak penderitaan, Yudistira mengambil tanggung jawabnya sebagai pemimpin dengan penuh keberanian dan keteguhan hati.\n\nDi tengah-tengah pertempuran, Yudistira juga menghadapi ujian moral ketika ia harus membunuh Drona, guru besar Pandawa dan Kaurawa, yang bersekutu dengan pihak Kaurawa. Meskipun berat hati, Yudistira melaksanakan tugasnya demi kepentingan yang lebih besar. Pada akhirnya, perang berakhir dengan kemenangan bagi Pandawa, meskipun banyak kerugian dan penderitaan yang terjadi. Yudistira kemudian memerintah dengan bijaksana sebagai raja Hastinapura, memimpin kerajaan dengan keadilan dan kebajikan.\n\nKisah Yudistira dalam cerita Mahabharata menggambarkan perjuangan seorang pemimpin yang harus menghadapi berbagai ujian dan tantangan dalam menjalankan tanggung jawabnya. Meskipun mengalami penderitaan dan kesulitan, Yudistira tetap setia pada nilai-nilai kebaikan dan kebenaran, menjadi contoh yang inspiratif bagi banyak orang.",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/yudistira-character-traditional-puppet-show-wayang-kulit-java-indonesia-73150219 1.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720273780858,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"parentId": "fld_88c22af3a2104349849e5cc3da1de130",
+			"modified": 1720529414352,
+			"created": 1720529414352,
+			"name": "Puppet",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362422549.75,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_e5d4dda7b895430bb6bffe49054f158e",
+			"parentId": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"modified": 1720529543609,
+			"created": 1720529414356,
+			"url": "{{ _.RAILWAY }}puppets",
+			"name": "Get All Puppet",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_21a569cf22d54ce29f31527ec650ba70",
+			"parentId": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"modified": 1720529551479,
+			"created": 1720529414358,
+			"url": "{{ _.RAILWAY }}puppets/1",
+			"name": "Get Puppet",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780783,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9786eeb7190a45fd9a73a5a9cfc32ec3",
+			"parentId": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"modified": 1720529559077,
+			"created": 1720529414364,
+			"url": "{{ _.RAILWAY }}puppets/1",
+			"name": "Update Puppet",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_c889bfce8c464595badd18267ca393f9",
+						"name": "name",
+						"value": "Puntadewa",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "description",
+						"value": "Puntadewa atau Yudistira adalah salah satu tokoh sentral dalam epik Mahabharata. Kisahnya dimulai dengan kelahirannya sebagai putra tertua Pandu dan Kunti. Sejak kecil, Yudistira telah menunjukkan sifat-sifat kebijaksanaan, keadilan, dan kesetiaan yang luar biasa./n/nDalam perjalanan hidupnya, Yudistira menghadapi banyak cobaan dan ujian. Salah satu momen penting dalam kehidupannya adalah permainan dadu yang diatur oleh Duryodana, saudara sepupunya yang iri padanya. Dalam permainan dadu itu, Yudistira kehilangan segalanya, termasuk tanah, harta, dan bahkan saudara-saudaranya. Akhirnya, ia bahkan mempertaruhkan dirinya sendiri dan Kunti.\\n\\nMeskipun demikian, Yudistira memenangkan kembali segalanya dalam permainan dadu terakhir. Namun, kemenangan ini tidak membawa kebahagiaan, karena ia menyadari bahwa harga kemenangan tersebut sangat mahal, dan permainan dadu itu merupakan awal dari perang besar di Kurukshetra.\\n\\nSebagai pemimpin Pandawa, Yudistira memainkan peran yang sangat penting dalam perang tersebut. Meskipun merasa terpukul oleh kenyataan bahwa perang ini akan menyebabkan banyak penderitaan, Yudistira mengambil tanggung jawabnya sebagai pemimpin dengan penuh keberanian dan keteguhan hati.\\n\\nDi tengah-tengah pertempuran, Yudistira juga menghadapi ujian moral ketika ia harus membunuh Drona, guru besar Pandawa dan Kaurawa, yang bersekutu dengan pihak Kaurawa. Meskipun berat hati, Yudistira melaksanakan tugasnya demi kepentingan yang lebih besar. Pada akhirnya, perang berakhir dengan kemenangan bagi Pandawa, meskipun banyak kerugian dan penderitaan yang terjadi. Yudistira kemudian memerintah dengan bijaksana sebagai raja Hastinapura, memimpin kerajaan dengan keadilan dan kebajikan.\\n\\nKisah Yudistira dalam cerita Mahabharata menggambarkan perjuangan seorang pemimpin yang harus menghadapi berbagai ujian dan tantangan dalam menjalankan tanggung jawabnya. Meskipun mengalami penderitaan dan kesulitan, Yudistira tetap setia pada nilai-nilai kebaikan dan kebenaran, menjadi contoh yang inspiratif bagi banyak orang.",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_2f16aa54522843948bde17f20e486edd",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\yudistira-character-traditional-puppet-show-wayang-kulit-java-indonesia-73150219 1.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780770.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_93fcabc9d09b40ff8d78c84ed70597d5",
+			"parentId": "fld_1dfc4d4d2480475b9f02f436cf6d6bef",
+			"modified": 1720529566685,
+			"created": 1720529414362,
+			"url": "{{ _.RAILWAY }}puppets/1",
+			"name": "Delete Puppet",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_91f26b323fa44f0ab551b0d49d968d35",
+			"parentId": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"modified": 1720531868197,
+			"created": 1720529414347,
+			"url": "{{ _.RAILWAY }}events",
+			"name": "Post Event",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Pesta Rakyat Jawa Barat Pagelaran Seni Budaya Siliwangi",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "start_date",
+						"value": "2024-03-21",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "end_date",
+						"value": "2024-03-21",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Image.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "location",
+						"value": "Bandung",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/PKM/Screenshot_2024-02-07-14-51-57-45_1c337646f29875672b5a61192b9010f9 1.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720273780933,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"parentId": "fld_88c22af3a2104349849e5cc3da1de130",
+			"modified": 1720529414332,
+			"created": 1720529414332,
+			"name": "Event",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362415453.5,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_5d551d2bb44a4498b6dedec4ec85c91b",
+			"parentId": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"modified": 1720529581885,
+			"created": 1720529414336,
+			"url": "{{ _.RAILWAY }}events",
+			"name": "Get All Events",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780833,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0475af08b481410ebe03c76f4e460001",
+			"parentId": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"modified": 1720529594394,
+			"created": 1720529414339,
+			"url": "{{ _.RAILWAY }}events/1",
+			"name": "Get Event",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780820.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c7520f0cbba3455787cc21b0eb49dc46",
+			"parentId": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"modified": 1720531724008,
+			"created": 1720529414345,
+			"url": "{{ _.RAILWAY }}events/2",
+			"name": "Update Event",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_697ad460828349409fc3af00b93883d7",
+						"name": "name",
+						"value": "Festival Wayang Orang Indonesia 2023",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "start_date",
+						"value": "2024-10-18",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_343b4ca6059d4446bf60386d8163d6ca",
+						"name": "end_date",
+						"value": "2024-10-21",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_f8c59dd1fb894a689f8a713b059dd162",
+						"name": "location",
+						"value": "Semarang",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_4a0d733e5b7a49e49f357278b421cadc",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": true,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 42.png"
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720273780808,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e144a74b64484926935f5c3d3e0743cc",
+			"parentId": "fld_4152d8d226eb46e8bcf65ad0f8f7db4a",
+			"modified": 1720529612463,
+			"created": 1720529414342,
+			"url": "{{ _.RAILWAY }}events/4",
+			"name": "Delete Event",
+			"description": "",
+			"method": "DELETE",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780458,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b86fa48181934bfca5b54100dbb577df",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720532499263,
+			"created": 1720529414407,
+			"url": "{{ _.RAILWAY }}museums",
+			"name": "Add Museum",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Museum Wayang Jakarta",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "about",
+						"value": "Bangunan Museum Wayang dulunya merupakan sebuah gereja tua yang didirikan oleh VOC pada tahun 1640 dengan nama 'de oude Hollandsche Kerk'. Kemudian, gedung tersebut berfungsi sebagai tempat peribadatan penduduk sipil dan tentara Belanda yang tinggal di Batavia, Jakarta sampai tahun 1732. Lalu, pada tahun 1733, gereja tersebut berubah nama menjadi \"de nieuwe Hollandsche Kerk\" yang berdiri sampai tahun 1808. Kemudian, bangunan tersebut hancur akibat gempa bumi. \n\nSetelah dibedah, bangunan itu diserahkan kepada Stichting Oud Batavia untuk dijadikan museum yang diberi nama de Oude Bataviasche Museum atau Museum Batavia Lama.\n\nDua belas tahun setelah proklamasi kemerdekaan 1945, tepatnya pada tahun 1957, pemerintah menyerahkan gedung Museum Batavia Lama kepada Lembaga Kebudayaan Indonesia. Nama bangunan itu Museum Jakarta Lama, yang kemudian berubah menjadi Museum Jakarta pada 1 Agustus 1960.\n\nPada tahun 1968, Museum Jakarta kemudian diserahkan kepada Pemerintah Provinsi DKI Jakarta. Lalu, Museum Jakarta berubah menjadi Museum Wayang yang diresmikan pada tanggal 13 Agustus 1975 oleh Ali Sadikin, Gubernur DKI Jakarta pada waktu itu.",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "2024-02-03",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/image 12.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "address",
+						"value": "Jalan Pintu Besar Utara No.27 Pinangsia, RT.3/RW.6, Kota Tua, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "regency",
+						"value": "Jakarta Barat",
+						"description": "",
+						"disabled": false,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Screenshot_2024-02-07-15-15-51-40_1c337646f29875672b5a61192b9010f9 1.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_ac6c778f43bb46c8a613350520f905b9",
+						"name": "province",
+						"value": "Daerah Khusus Ibukota Jakarta",
+						"description": "",
+						"disabled": false
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720273780958,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"parentId": "fld_88c22af3a2104349849e5cc3da1de130",
+			"modified": 1720529414368,
+			"created": 1720529414368,
+			"name": "Museum",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1715362408357.25,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_9389fe0d3c0344feaa4401bbb6552f60",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529628066,
+			"created": 1720529414411,
+			"url": "{{ _.RAILWAY }}museums",
+			"name": "Get All Museums",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780833,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_024a9c269ebd47bfb16253117fa23385",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529634878,
+			"created": 1720529414413,
+			"url": "{{ _.RAILWAY }}museums/2",
+			"name": "Get Museum",
+			"description": "",
+			"method": "GET",
+			"body": { "mimeType": "application/json", "text": "" },
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780820.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_def38af51233480d9f56a1b3852ba17e",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529646681,
+			"created": 1720529414416,
+			"url": "{{ _.RAILWAY }}museums/1",
+			"name": "Update Museum",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_ae2936b8e1b646a58bd1950f30235ca1",
+						"name": "name",
+						"value": "Wayang Jakarta",
+						"description": "",
+						"disabled": false
+					},
+					{
+						"id": "pair_6c15f304d2134d4e9a26dd2c8894943e",
+						"name": "about",
+						"value": "Bangunan Museum Wayang dulunya merupakan sebuah gereja tua yang didirikan oleh VOC pada tahun 1640 dengan nama 'de oude Hollandsche Kerk'. Kemudian, gedung tersebut berfungsi sebagai tempat peribadatan penduduk sipil dan tentara Belanda yang tinggal di Batavia, Jakarta sampai tahun 1732. Lalu, pada tahun 1733, gereja tersebut berubah nama menjadi \"de nieuwe Hollandsche Kerk\" yang berdiri sampai tahun 1808. Kemudian, bangunan tersebut hancur akibat gempa bumi. \n\nSetelah dibedah, bangunan itu diserahkan kepada Stichting Oud Batavia untuk dijadikan museum yang diberi nama de Oude Bataviasche Museum atau Museum Batavia Lama.\n\nDua belas tahun setelah proklamasi kemerdekaan 1945, tepatnya pada tahun 1957, pemerintah menyerahkan gedung Museum Batavia Lama kepada Lembaga Kebudayaan Indonesia. Nama bangunan itu Museum Jakarta Lama, yang kemudian berubah menjadi Museum Jakarta pada 1 Agustus 1960.\n\nPada tahun 1968, Museum Jakarta kemudian diserahkan kepada Pemerintah Provinsi DKI Jakarta. Lalu, Museum Jakarta berubah menjadi Museum Wayang yang diresmikan pada tanggal 13 Agustus 1975 oleh Ali Sadikin, Gubernur DKI Jakarta pada waktu itu.",
+						"description": "",
+						"disabled": true,
+						"type": "text",
+						"multiline": true
+					},
+					{
+						"id": "pair_bff49a799a5d4b73bf2aaee593b43dae",
+						"name": "file",
+						"value": "2024-02-03",
+						"description": "",
+						"disabled": true,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 13.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_3129da2e3a0a44719ad334c4105204f8",
+						"name": "address",
+						"value": "Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"id": "pair_53473bf4791841c1a65e00863cf3934f",
+						"name": "regency",
+						"value": "Banyumas",
+						"description": "",
+						"disabled": true,
+						"type": "text",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\Screenshot_2024-02-07-15-15-51-40_1c337646f29875672b5a61192b9010f9 1.png",
+						"multiline": false
+					},
+					{
+						"id": "pair_ac6c778f43bb46c8a613350520f905b9",
+						"name": "province",
+						"value": "Jawa Tengah",
+						"description": "",
+						"disabled": true
+					}
+				]
+			},
+			"parameters": [],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720273780818.5469,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_73446e6012e34b8095758cd89c87315e",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529652606,
+			"created": 1720529414418,
+			"url": "{{ _.RAILWAY }}museums/1",
+			"name": "Delete Museum",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720273780817.5703,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9a561aed2404480fa6a54dcd793052f3",
+			"parentId": "fld_ec1df1579bae44b591e1d598411b89ed",
+			"modified": 1720532572179,
+			"created": 1720529414378,
+			"url": "{{ _.RAILWAY }}operating_hours",
+			"name": "Add Operating Hour",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"is_sunday\": true,\n\t\"is_monday\": false,\n\t\"is_tuesday\": true,\n\t\"is_wednesday\": true,\n\t\"is_thursday\": true,\n\t\"is_friday\": true,\n\t\"is_saturday\": true,\n\t\"is_national_holiday\": true,\n\t\"start_time\": \"09.00\",\n\t\"end_time\": \"15.00\",\n\t\"timezone\": \"WIB\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720435905876,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_ec1df1579bae44b591e1d598411b89ed",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529414373,
+			"created": 1720529414373,
+			"name": "Operating Hour",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780816.5938,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_a7e7f406bc654f8880bdff5f2e60bebb",
+			"parentId": "fld_ec1df1579bae44b591e1d598411b89ed",
+			"modified": 1720529665574,
+			"created": 1720529414381,
+			"url": "{{ _.RAILWAY }}operating_hours/2",
+			"name": "Update Operating Hour",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"start_time\": \"08.00\",\n\t\"timezone\": \"WITA\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435905776,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1886f5e4694643f1aa433f54cd4df027",
+			"parentId": "fld_ec1df1579bae44b591e1d598411b89ed",
+			"modified": 1720529672174,
+			"created": 1720529414384,
+			"url": "{{ _.RAILWAY }}operating_hours/2",
+			"name": "Delete Operating Hour",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435905676,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_366bbefdb3f64e21b7471262f6671826",
+			"parentId": "fld_da16b05718cf4b9ea9fcb1762431a8cd",
+			"modified": 1720532660803,
+			"created": 1720529414389,
+			"url": "{{ _.RAILWAY }}tickets",
+			"name": "Add Ticket",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"price\": 3000,\n\t\"type\": \"INDIVIDUAL\",\n\t\"age\": \"ADULT\"\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720435943889,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_da16b05718cf4b9ea9fcb1762431a8cd",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529414387,
+			"created": 1720529414387,
+			"name": "Ticket",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780814.0547,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_fd58a9dc4c934897a94a70e6b2f1dabf",
+			"parentId": "fld_da16b05718cf4b9ea9fcb1762431a8cd",
+			"modified": 1720532734399,
+			"created": 1720529414392,
+			"url": "{{ _.RAILWAY }}tickets/3",
+			"name": "Update Ticket",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"price\": 5000\n}"
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "application/json" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720435924882.5,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_aa2fc017d4e8458f84e76241430861e5",
+			"parentId": "fld_da16b05718cf4b9ea9fcb1762431a8cd",
+			"modified": 1720529693400,
+			"created": 1720529414394,
+			"url": "{{ _.RAILWAY }}tickets/1",
+			"name": "Delete Ticket",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435915379.25,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e90ae53f237f441c9862b3e3ff344a1d",
+			"parentId": "fld_319422d046aa4339ac4012fdc00ff03a",
+			"modified": 1720532872379,
+			"created": 1720529414399,
+			"url": "{{ _.RAILWAY }}collections",
+			"name": "Post Collections",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_6e03ecef698a46ffa9534dcadb792b42",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/PKM (1)/image 58.png"
+					},
+					{
+						"id": "pair_dfeef9ca5739414fb56e9dc529e83217",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/PKM (1)/image 57.png"
+					},
+					{
+						"id": "pair_e4e3754bf5db482ca06b19d517b7a1eb",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/PKM (1)/image 56.png"
+					},
+					{
+						"id": "pair_8757a4c95b604a609b6fd1e112c75920",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"type": "file",
+						"fileName": "/home/madamiz/Downloads/PKM (1)/image 55.png"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {
+				"type": "bearer",
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwiZW1haWwiOiJhZG1pbkBkZXdhbnRhcmEuY29tIiwiaXNMb2dnZWRJbiI6dHJ1ZSwiaW1hZ2VVcmwiOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA3LTA5VDEyOjQxOjMwLjUwNloiLCJ1cGRhdGVkQXQiOiIyMDI0LTA3LTA5VDEzOjI0OjAxLjE0NFoiLCJpYXQiOjE3MjA1MzE0NDEsImV4cCI6MTcyMDUzNTA0MX0.EGt-OBBqQlXdXwjHt5CgFrsuTGjPgD8f5GOG-t0XrLs"
+			},
+			"metaSortKey": -1720435975025,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_319422d046aa4339ac4012fdc00ff03a",
+			"parentId": "fld_99c96f70e6b5481780d6ee333700d04f",
+			"modified": 1720529414398,
+			"created": 1720529414398,
+			"name": "Collection",
+			"description": "",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1720273780809.5625,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_904da04a84a1441caec4cd8b80655f4b",
+			"parentId": "fld_319422d046aa4339ac4012fdc00ff03a",
+			"modified": 1720529708509,
+			"created": 1720529414402,
+			"url": "{{ _.RAILWAY }}collections/1",
+			"name": "Update Collections",
+			"description": "",
+			"method": "PUT",
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_6e03ecef698a46ffa9534dcadb792b42",
+						"name": "file",
+						"value": "",
+						"description": "",
+						"disabled": false,
+						"type": "file",
+						"fileName": "C:\\Users\\Rizal Adiyaksa\\Downloads\\image 12.png"
+					}
+				]
+			},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "1",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [
+				{ "name": "Content-Type", "value": "multipart/form-data" },
+				{ "name": "User-Agent", "value": "insomnia/8.6.1" }
+			],
+			"authentication": {},
+			"metaSortKey": -1720435959457,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c3532b49dc30429ba6c7e4e9e5720b64",
+			"parentId": "fld_319422d046aa4339ac4012fdc00ff03a",
+			"modified": 1720529715793,
+			"created": 1720529414404,
+			"url": "{{ _.RAILWAY }}collections/7",
+			"name": "Delete Collections",
+			"description": "",
+			"method": "DELETE",
+			"body": {},
+			"parameters": [
+				{
+					"id": "pair_b4114398912b474eb5fb3168c744acd3",
+					"name": "museum_id",
+					"value": "2",
+					"description": "",
+					"disabled": false
+				}
+			],
+			"headers": [{ "name": "User-Agent", "value": "insomnia/8.6.1" }],
+			"authentication": {},
+			"metaSortKey": -1720435951673,
+			"isPrivate": false,
+			"pathParameters": [],
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "env_7f8e00204efe4d15aab67f840da6fa7f",
+			"parentId": "wrk_a26058b6c6e84828bc4f6afa8a6423f4",
+			"modified": 1720529757403,
+			"created": 1715207271684,
+			"name": "Base Environment",
+			"data": {
+				"LOCALHOST": "http://localhost:3000/api/v1/",
+				"RAILWAY": "https://express-js-develop.up.railway.app/api/v1/"
+			},
+			"dataPropertyOrder": { "&": ["LOCALHOST", "RAILWAY"] },
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1715207271684,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_955a49fcebae474d81c1f28bf49c35a3",
+			"parentId": "wrk_a26058b6c6e84828bc4f6afa8a6423f4",
+			"modified": 1720271617200,
+			"created": 1720271617200,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		}
+	]
+}

@@ -10,15 +10,150 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_PRISMA_URL")
-  directUrl = env("DATABASE_URL_NON_POOLING")
+  url      = env("DATABASE_URL")
+}
 
+model Admin {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String
+  isLoggedIn Boolean  @default(false)
+  imageUrl   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model BlacklistedToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blacklisted_tokens")
+}
+
+model Puppet {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("puppets")
+}
+
+model Event {
+  id        Int      @id @default(autoincrement())
+  name      String
+  startDate DateTime @db.Date
+  endDate   DateTime @db.Date
+  location  String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("events")
+}
+
+model Museum {
+  id              Int               @id @default(autoincrement())
+  name            String
+  about           String
+  imageUrl        String
+  Location        Location[]
+  OperationalHour OperationalHour[]
+  Ticket          Ticket[]
+  Collection      Collection[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@map("museums")
+}
+
+model Location {
+  id        Int      @id @default(autoincrement())
+  address   String
+  regency   String
+  province  String
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("locations")
+}
+
+model OperationalHour {
+  id                Int      @id @default(autoincrement())
+  isSunday          Boolean
+  isMonday          Boolean
+  isTuesday         Boolean
+  isWednesday       Boolean
+  isThursday        Boolean
+  isFriday          Boolean
+  isSaturday        Boolean
+  isNationalHoliday Boolean
+  startTime         String
+  endTime           String
+  timezone          String
+  museumId          Int
+  museum            Museum   @relation(fields: [museumId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("operational_hours")
+}
+
+model Ticket {
+  id         Int      @id @default(autoincrement())
+  price      Decimal  @default(0.0)
+  isWeekdays Boolean  @default(true)
+  isWeekend  Boolean  @default(true)
+  type       Type     @default(INDIVIDUAL)
+  age        Age      @default(GENERAL)
+  museumId   Int
+  museum     Museum   @relation(fields: [museumId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("tickets")
+}
+
+enum Type {
+  INDIVIDUAL
+  GROUP
+}
+
+enum Age {
+  CHILD
+  STUDENT
+  ADULT
+  GENERAL
+}
+
+model Collection {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("collections")
 }
 
 model Article {
-  id      Int    @id @default(autoincrement())
-  title   String
-  content String
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("articles")
 }

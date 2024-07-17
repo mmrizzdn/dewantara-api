@@ -5,17 +5,28 @@
 	"scripts": {
 		"start": "node ./bin/www",
 		"dev": "nodemon ./bin/www",
-		"vercel-build": "prisma generate && prisma migrate deploy"
+		"seed": "node ./prisma/seeders/seed.js"
 	},
 	"dependencies": {
-		"@prisma/client": "^5.13.0",
+		"@prisma/client": "^5.17.0",
+		"bcrypt": "^5.1.1",
 		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
-		"debug": "^4.3.4",
+		"date-fns": "^3.6.0",
 		"dotenv": "^16.4.5",
 		"express": "^4.19.2",
+		"imagekit": "^5.0.1",
+		"jsonwebtoken": "^9.0.2",
 		"morgan": "^1.10.0",
-		"prisma": "^5.13.0"
+		"multer": "^1.4.5-lts.1",
+		"prisma": "^5.17.0",
+		"swagger-ui-express": "^5.0.1",
+		"vercel": "^35.0.2",
+		"yaml": "^2.4.5"
 	},
-	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+	"main": "app.js",
+	"repository": "https://github.com/mmrizzdn/dewantara-api.git",
+	"author": "mmrizzdn <zoed.eldien15@gmail.com>",
+	"license": "MIT"
 }

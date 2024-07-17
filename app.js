@@ -2,18 +2,26 @@ var express = require('express');
 var logger = require('morgan');
 
 const cors = require('cors');
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yaml');
+const fs = require('fs');
 
-var indexRouter = require('./routes/v1/index');
-// var usersRouter = require('./routes/users');
+const file = fs.readFileSync('./api-docs.yaml', 'utf8');
+const swaggerDocument = YAML.parse(file);
+
+var indexRouter = require('./routes/index');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/api/v1', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/api/v1/auth', adminRouter);
 
 // home page
 app.get('/', (req, res) => {
