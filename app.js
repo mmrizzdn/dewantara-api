@@ -3,13 +3,10 @@ var logger = require('morgan');
 
 const cors = require('cors');
 const swaggerUI = require('swagger-ui-express');
-const YAML = require('yaml');
-const fs = require('fs');
+const YAML = require('yamljs');
 const path = require('path');
 
-const filePath = path.join(__dirname, 'api-docs.yaml');
-const file = fs.readFileSync(filePath, 'utf8');
-const swaggerDocument = YAML.parse(file);
+const swaggerDocument = YAML.load(path.join(__dirname, 'api-docs.yaml'));
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
