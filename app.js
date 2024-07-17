@@ -5,8 +5,10 @@ const cors = require('cors');
 const swaggerUI = require('swagger-ui-express');
 const YAML = require('yaml');
 const fs = require('fs');
+const path = require('path');
 
-const file = fs.readFileSync('./api-docs.yaml', 'utf8');
+const filePath = path.join(__dirname, 'api-docs.yaml');
+const file = fs.readFileSync(filePath, 'utf8');
 const swaggerDocument = YAML.parse(file);
 
 var indexRouter = require('./routes/index');
