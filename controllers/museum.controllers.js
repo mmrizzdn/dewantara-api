@@ -86,6 +86,74 @@ module.exports = {
 		}
 	},
 
+	getMuseumsByPaginationNSearch: async (req, res, next) => {
+		try {
+			let { page, limit, search } = req.query;
+
+			let pageNumber = Number(page) || 1;
+			let limitNumber = Number(limit) || 6;
+
+			let offset = (pageNumber - 1) * limitNumber;
+
+			let where = {};
+
+			if (search) {
+				where = {
+					OR: [
+						{
+							name: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						},
+						{
+							about: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						}
+					]
+				};
+			}
+
+			let results = await prisma.museum.findMany({
+				take: limitNumber,
+				skip: offset,
+				where,
+				include: {
+					Location: true,
+					OperationalHour: true,
+					Ticket: true,
+					Collection: true
+				}
+			});
+
+			if (results.length === 0) {
+				return res.status(404).json({
+					status: false,
+					message: 'museums not found',
+					data: null
+				});
+			}
+
+			let total = await prisma.museum.count({ where });
+
+			return res.status(200).json({
+				status: true,
+				message: 'OK',
+				data: results,
+				meta: {
+					page: pageNumber,
+					limit: limitNumber,
+					totalPages: Math.ceil(total / limitNumber),
+					totalResults: total
+				}
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
 	getMuseum: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
@@ -121,18 +189,42 @@ module.exports = {
 	updateMuseum: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
-			let { name, about } = req.body;
+			let { name, about, address, regency, province } = req.body;
 
 			let result = await prisma.museum.findUnique({
 				where: { id }
 			});
 
-			if (!result) {
+			let location = await prisma.location.findFirst({
+				where: { museumId: id }
+			});
+
+			if (!result || !location) {
 				return res.status(404).json({
 					status: false,
 					message: 'museum not found',
 					data: null
 				});
+			}
+
+			if (name) {
+				result.name = name;
+			}
+
+			if (about) {
+				result.about = about;
+			}
+
+			if (address) {
+				location.address = address;
+			}
+
+			if (regency) {
+				location.regency = regency;
+			}
+
+			if (province) {
+				location.province = province;
 			}
 
 			if (req.file) {
@@ -149,16 +241,28 @@ module.exports = {
 			let museum = await prisma.museum.update({
 				where: { id },
 				data: {
-					name,
-					about,
+					name: result.name,
+					about: result.about,
 					imageUrl: result.imageUrl
+				}
+			});
+
+			let updatedLocation = await prisma.location.update({
+				where: { id: location.id },
+				data: {
+					address: location.address,
+					regency: location.regency,
+					province: location.province
 				}
 			});
 
 			return res.status(201).json({
 				status: true,
 				message: 'museum updated',
-				data: museum
+				data: {
+					museum,
+					updatedLocation
+				}
 			});
 		} catch (error) {
 			next(error);
@@ -380,29 +484,31 @@ module.exports = {
 				result.endTime = end_time;
 			}
 
-			let operationalHour = {
-				isSunday: result.isSunday,
-				isMonday: result.isMonday,
-				isTuesday: result.isTuesday,
-				isWednesday: result.isWednesday,
-				isThursday: result.isThursday,
-				isFriday: result.isFriday,
-				isSaturday: result.isSaturday,
-				isNationalHoliday: result.isNationalHoliday,
-				startTime: result.startTime,
-				endTime: result.endTime,
-				timezone
-			};
+			if (timezone) {
+				result.timezone = timezone;
+			}
 
-			updatedOperationalHour = await prisma.operationalHour.update({
+			operationalHour = await prisma.operationalHour.update({
 				where: { id, museumId },
-				data: operationalHour
+				data: {
+					isSunday: result.isSunday,
+					isMonday: result.isMonday,
+					isTuesday: result.isTuesday,
+					isWednesday: result.isWednesday,
+					isThursday: result.isThursday,
+					isFriday: result.isFriday,
+					isSaturday: result.isSaturday,
+					isNationalHoliday: result.isNationalHoliday,
+					startTime: result.startTime,
+					endTime: result.endTime,
+					timezone: result.timezone
+				}
 			});
 
 			return res.status(200).json({
 				status: true,
 				message: 'operational hour updated',
-				data: updatedOperationalHour
+				data: operationalHour
 			});
 		} catch (error) {
 			next(error);
@@ -545,12 +651,24 @@ module.exports = {
 
 			let { price, type, age } = req.body;
 
+			if (price) {
+				result.price = price;
+			}
+
+			if (type) {
+				result.type = type;
+			}
+
+			if (age) {
+				result.age = age;
+			}
+
 			let ticket = await prisma.ticket.update({
 				where: { id, museumId },
 				data: {
-					price,
-					type,
-					age
+					price: result.price,
+					type: result.type,
+					age: result.age
 				}
 			});
 

@@ -74,6 +74,77 @@ module.exports = {
 		}
 	},
 
+	getArticlesByPaginationNSearch: async (req, res, next) => {
+		try {
+			let { page, limit, search } = req.query;
+
+			let pageNumber = Number(page) || 1;
+			let limitNumber = Number(limit) || 6;
+
+			let offset = (pageNumber - 1) * limitNumber;
+
+			let where = {};
+
+			if (search) {
+				where = {
+					OR: [
+						{
+							title: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						},
+						{
+							content: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						}
+					]
+				};
+			}
+
+			let results = await prisma.article.findMany({
+				take: limitNumber,
+				skip: offset,
+				where
+			});
+
+			if (results.length === 0) {
+				return res.status(404).json({
+					status: false,
+					message: 'articles not found',
+					data: null
+				});
+			}
+
+			let total = await prisma.article.count({ where });
+
+			let articles = results.map((article) => {
+				return {
+					...article,
+					timeAgo: formatDistanceToNow(new Date(article.createdAt), {
+						addSuffix: true
+					})
+				};
+			});
+
+			return res.status(200).json({
+				status: true,
+				message: 'OK',
+				data: articles,
+				meta: {
+					page: pageNumber,
+					limit: limitNumber,
+					totalPages: Math.ceil(total / limitNumber),
+					totalResults: total
+				}
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
 	getArticle: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
@@ -124,6 +195,14 @@ module.exports = {
 				});
 			}
 
+			if (title) {
+				result.title = title;
+			}
+
+			if (content) {
+				result.content = content;
+			}
+
 			if (req.file) {
 				let strFile = req.file.buffer.toString('base64');
 
@@ -135,11 +214,13 @@ module.exports = {
 				result.imageUrl = url;
 			}
 
-			let article = { title, content, imageUrl: result.imageUrl };
-
 			let updatedArticle = await prisma.article.update({
 				where: { id },
-				data: article
+				data: {
+					title: result.title,
+					content: result.content,
+					imageUrl: result.imageUrl
+				}
 			});
 
 			return res.status(201).json({

@@ -2,7 +2,12 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const bcrypt = require('bcrypt');
 
-const main = async (req, res) => {
+const { articles } = require('./article.seeders');
+const { events } = require('./event.seeders');
+const { puppets } = require('./puppet.seeders');
+const { museums } = require('./museum.seeders');
+
+const main = async () => {
 	let password = await bcrypt.hash('admin123', 10);
 	await prisma.admin.create({
 		data: {
@@ -13,7 +18,12 @@ const main = async (req, res) => {
 		}
 	});
 
-	return console.info('admin created');
+	console.info('admin created');
+
+	await articles();
+	await events();
+	await puppets();
+	await museums();
 };
 
 main()

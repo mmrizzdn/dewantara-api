@@ -64,6 +64,68 @@ module.exports = {
 		}
 	},
 
+	getPuppetsByPaginationNSearch: async (req, res, next) => {
+		try {
+			let { limit, page, search } = req.query;
+
+			let pageNumber = Number(page) || 1;
+			let limitNumber = Number(limit) || 16;
+
+			let offset = (pageNumber - 1) * limitNumber;
+
+			let where = {};
+
+			if (search) {
+				where = {
+					OR: [
+						{
+							name: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						},
+						{
+							description: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						}
+					]
+				};
+			}
+
+			let results = await prisma.puppet.findMany({
+				take: limitNumber,
+				skip: offset,
+				where
+			});
+
+			if (results.length === 0) {
+				return res.status(404).json({
+					status: false,
+					message: 'puppets not found',
+					data: null
+				});
+			}
+
+			let total = await prisma.puppet.count({ where });
+
+			return res.status(200).json({
+				status: true,
+				message: 'OK',
+				data: results,
+				meta: {
+					page: pageNumber,
+					limit: limitNumber,
+					totalPages: Math.ceil(total / limitNumber),
+					totalResults: total
+				}
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
 	getPuppet: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
@@ -107,6 +169,14 @@ module.exports = {
 				});
 			}
 
+			if (name) {
+				result.name = name;
+			}
+
+			if (description) {
+				result.description = description;
+			}
+
 			if (req.file) {
 				let strFile = req.file.buffer.toString('base64');
 
@@ -118,11 +188,13 @@ module.exports = {
 				result.imageUrl = url;
 			}
 
-			let puppet = { name, description, imageUrl: result.imageUrl };
-
 			let updatedPuppet = await prisma.puppet.update({
 				where: { id },
-				data: puppet
+				data: {
+					name: result.name,
+					description: result.description,
+					imageUrl: result.imageUrl
+				}
 			});
 
 			return res.status(201).json({

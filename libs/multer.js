@@ -5,7 +5,7 @@ const generateFileFilter = (mimetypes) => {
 		if (mimetypes.includes(file.mimetype)) {
 			callback(null, true);
 		} else {
-			let err = new Error(`only ${mimetypes} can be uploaded!`);
+			let err = new Error(`only ${mimetypes.join(', ')} can be uploaded!`);
 			callback(err, false);
 		}
 	};

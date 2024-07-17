@@ -154,6 +154,11 @@
 				"timezone": "WIB"
 			}
 		],
+		"Ticket": [
+			{
+				"price": 0
+			}
+		],
 		"Collection": [
 			{
 				"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_wayang_indonesia_wonogiri/collections/image%2060.png?updatedAt=1720965990232"
@@ -163,7 +168,7 @@
 			}
 		]
 	},
-    { 
+	{
 		"name": "Museum Topeng & Wayang Ubud",
 		"about": "Rumah Topeng dan Wayang Setia Darma, didirikan sebagai respons terhadap kurangnya perhatian terhadap seni topeng dan wayang di Indonesia. Berlokasi di Jalan Tegal Bingin, Banjar Tengkulak Tengah, Desa Kemenuh, Sukawati, Gianyar, Bali, tempat ini telah beroperasi sejak 1998. Dipimpin oleh A Prayitno telah mengumpulkan koleksi seni topeng dan wayang selama bertahun-tahun, menunjukkan dedikasinya terhadap warisan budaya tersebut.\n\nPada tahun 2006, Museum Topeng dan Wayang Setia Darma resmi dibuka dengan desain yang alami, mencerminkan kekayaan budaya Nusantara. Museum ini menampilkan tiga rumah utama bergaya Joglo khas Jawa dan Limasan yang dibawa dari Jawa, dan menyajikan berbagai koleksi topeng dan wayang dari Indonesia serta berbagai negara lainnya seperti Bali, Jawa, Kalimantan, Papua, Afrika, dan Jepang. Dengan total koleksi mencapai 6.900 benda, termasuk 1.300 topeng dan 5.700 wayang, tempat ini menjadi salah satu destinasi unggulan bagi para pecinta seni dan budaya, sejajar dengan Museum Wayang Jakarta.",
 		"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/image%2015.png?updatedAt=1720966122584",
@@ -189,6 +194,11 @@
 				"timezone": "WITA"
 			}
 		],
+		"Ticket": [
+			{
+				"price": 0
+			}
+		],
 		"Collection": [
 			{
 				"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2063.png?updatedAt=1720966196074"
@@ -196,15 +206,15 @@
 			{
 				"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2064.png?updatedAt=1720966195658"
 			},
-            {
-                "imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2061.png?updatedAt=1720966194161"
-            },
-            {
-                "imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2062.png?updatedAt=1720966193530"
-            }
+			{
+				"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2061.png?updatedAt=1720966194161"
+			},
+			{
+				"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/collections/image%2062.png?updatedAt=1720966193530"
+			}
 		]
 	},
-	{ 
+	{
 		"name": "Museum Wayang Gubug Mojokerto",
 		"about": "Museum Gubug Wayang Mojokerto, yang diresmikan pada 15 Agustus 2015, menjadi salah satu pilar budaya Indonesia yang menonjolkan keberagaman Nusantara. Dengan peran pentingnya dalam edukasi karakter budaya masyarakat Indonesia, museum ini bertujuan agar warisan budaya tidak dilupakan oleh generasi penerus. Kecintaan terhadap keindahan budaya Indonesia mendorong Gubug Wayang untuk terus berbenah dan menyajikan informasi sejarah yang kaya tentang kekayaan budaya Nusantara.\n\nTerletak di Jl. R.A Kartini No. 23 Kota Mojokerto, museum ini adalah tempat koleksi wayang terlengkap di Jawa Timur. Dengan ribuan koleksi mulai dari wayang kulit, wayang beber, wayang golek, hingga koleksi unik seperti serial Si Unyil, Museum Gubug Wayang menjadi daya tarik utama bagi wisatawan yang berkunjung ke Kota Mojokerto. Selain menampilkan koleksi wayang, museum ini juga menawarkan spot foto yang menarik dan menampilkan pertunjukan tarian daerah pada waktu-waktu tertentu. Dengan harga tiket Rp. 35.000, pengunjung dapat menikmati suasana museum yang kaya akan sejarah budaya Nusantara dan mengalami kekayaan seni tradisional Indonesia secara langsung.",
 		"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_wayang_gubug_mojokerto/image%2016.png?updatedAt=1720966283127",
@@ -249,7 +259,7 @@
 			}
 		]
 	},
-	{ 
+	{
 		"name": "Galeri Wayang Purwakarta",
 		"about": "Galeri Wayang di Purwakarta, Jawa Barat, menjadi destinasi wisata menarik yang cocok untuk semua usia. Pengunjung dapat menikmati berbagai informasi sejarah tentang wayang Nusantara di tengah suasana belajar yang menyenangkan, didukung oleh pencahayaan yang tenang dan penataan ruang yang menarik. Setiap ruangan dihiasi dengan warna hitam dan putih, menciptakan atmosfer yang unik, sementara spot foto yang Instagramable tersedia di setiap sudut galeri.\n\nGaleri ini menawarkan pengalaman belajar yang mendalam dengan dua ruangan yang menampilkan relief kisah utama Mahabharata dan Ramayana serta koleksi wayang golek karakter Bima dari berbagai wilayah di Jawa Barat. Tidak hanya itu, pengunjung juga dapat menjelajahi karya seni berbentuk pohon hayat yang dihiasi oleh topeng karakter wayang, serta membaca virtual book yang mengisahkan sejarah dan karakter wayang. Dengan tambahan panggung pertunjukan lengkap dengan alat musik pengiring, Galeri Wayang Purwakarta memberikan pengalaman yang memikat bagi para pecinta seni dan budaya.",
 		"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/galeri_wayang_purwakarta/image%2017.png?updatedAt=1720968586369",

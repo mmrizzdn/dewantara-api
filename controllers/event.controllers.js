@@ -78,6 +78,68 @@ module.exports = {
 		}
 	},
 
+	getEventsByPaginationNSearch: async (req, res, next) => {
+		try {
+			let { limit, page, search } = req.query;
+
+			let pageNumber = Number(page) || 1;
+			let limitNumber = Number(limit) || 8;
+
+			let offset = (pageNumber - 1) * limitNumber;
+
+			let where = {};
+
+			if (search) {
+				where = {
+					OR: [
+						{
+							name: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						},
+						{
+							location: {
+								contains: search,
+								mode: 'insensitive'
+							}
+						}
+					]
+				};
+			}
+
+			let results = await prisma.event.findMany({
+				take: limitNumber,
+				skip: offset,
+				where
+			});
+
+			if (results.length === 0) {
+				return res.status(404).json({
+					status: false,
+					message: 'events not found',
+					data: null
+				});
+			}
+
+			let total = await prisma.event.count({ where });
+
+			return res.status(200).json({
+				status: true,
+				message: 'OK',
+				data: results,
+				meta: {
+					page: pageNumber,
+					limit: limitNumber,
+					totalPages: Math.ceil(total / limitNumber),
+					totalResults: total
+				}
+			});
+		} catch (error) {
+			next(error);
+		}
+	},
+
 	getEvent: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
@@ -121,6 +183,14 @@ module.exports = {
 				});
 			}
 
+			if (name) {
+				result.name = name;
+			}
+
+			if (location) {
+				result.location = location;
+			}
+
 			if (start_date) {
 				result.startDate = new Date(start_date);
 			}
@@ -148,23 +218,21 @@ module.exports = {
 				result.imageUrl = url;
 			}
 
-			let event = {
-				name,
-				startDate: result.startDate,
-				endDate: result.endDate,
-				location,
-				imageUrl: result.imageUrl
-			};
-
-			let updatedEvent = await prisma.event.update({
+			let event = await prisma.event.update({
 				where: { id },
-				data: event
+				data: {
+					name: result.name,
+					startDate: result.startDate,
+					endDate: result.endDate,
+					location: result.location,
+					imageUrl: result.imageUrl
+				}
 			});
 
 			return res.status(201).json({
 				status: true,
 				message: 'event updated',
-				data: updatedEvent
+				data: event
 			});
 		} catch (error) {
 			next(error);

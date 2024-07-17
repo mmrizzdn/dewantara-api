@@ -151,7 +151,6 @@ model Article {
   id          Int      @id @default(autoincrement())
   title       String
   content     String
-  publication DateTime
   imageUrl    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

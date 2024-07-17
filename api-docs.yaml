@@ -7,146 +7,1837 @@ info:
     email: zoed.eldien15@gmail.com
 servers:
   - url: http://localhost:3000/api/v1
+    description: Development server
+  - url: http://localhost:3001/api/v1
+    description: Development server - Vercel
 
 paths:
   /auth/login:
     post:
       tags:
-        - Autentikasi
+        - 'Authentication'
       summary: Login admin
-      description: Login admin dengan email dan password
       requestBody:
-        $ref: '#/components/requestBodies/Login'
+        $ref: '#/components/requestBodies/LoginRequest'
       responses:
-        201:
-          $ref: '#/components/responses/Created'
-          data:
-            allOf:
-              - $ref: '#/components/schemas/Authentication'
-            
-        400:
-          $ref: '#/components/responses/BadRequest'
-        401:
-          $ref: '#/components/responses/Unauthorized'
+        '201':
+          description: Login berhasil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Email dan password diperlukan atau email/password tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Admin sudah login dari sesi lain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /auth/admin_data:
+    get:
+      tags:
+        - 'Authentication'
+      summary: Mendapatkan data admin
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Data admin berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminResponse'
+  /auth/logout:
+    post:
+      tags:
+        - 'Authentication'
+      summary: Logout admin
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Logout berhasil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogoutResponse'
+  /article:
+    post:
+      tags:
+        - 'Article'
+      summary: Membuat artikel baru - admin
+      security:
+        - bearerAuth: []
+      requestBody:
+        $ref: '#/components/requestBodies/PostArticleRequest'
+      responses:
+        '201':
+          description: Artikel berhasil dibuat
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostArticleResponse'
+        '400':
+          description: Judul, konten, dan gambar diperlukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /articles/all:
+    get:
+      tags:
+        - 'Article'
+      summary: Mendapatkan semua artikel
+      responses:
+        '200':
+          description: Daftar artikel berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllArticlesResponse'
+        '404':
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /articles:
+    get:
+      tags:
+        - 'Article'
+      summary: Mendapatkan artikel dengan paginasi dan pencarian
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Halaman yang diminta
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Jumlah artikel per halaman
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Kata kunci untuk pencarian artikel
+      responses:
+        '200':
+          description: Daftar artikel berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticlesByPaginationNSearchResponse'
+        '404':
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /articles/{id}:
+    get:
+      tags:
+        - 'Article'
+      summary: Mendapatkan artikel berdasarkan ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID artikel
+      responses:
+        '200':
+          description: Artikel berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticleResponse'
+        '404':
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - 'Article'
+      summary: Memperbarui artikel - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID artikel
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateArticleRequest'
+      responses:
+        '201':
+          description: Artikel berhasil diperbarui
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateArticleResponse'
+        '404':
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Article'
+      summary: Menghapus artikel - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID artikel
+      responses:
+        '200':
+          description: Artikel berhasil dihapus
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteArticleResponse'
+        '404':
+          description: Artikel tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /event:
+    post:
+      tags:
+        - 'Event'
+      summary: Membuat event baru - admin
+      security:
+        - bearerAuth: []
+      requestBody:
+        $ref: '#/components/requestBodies/PostEventRequest'
+      responses:
+        '201':
+          description: Event berhasil dibuat
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostEventResponse'
+        '400':
+          description: name, start_date, end_date, location, dan image diperlukan atau start_date lebih besar dari end_date
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /events/all:
+    get:
+      tags:
+        - 'Event'
+      summary: Mendapatkan semua event
+      responses:
+        '200':
+          description: Daftar event berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllEventsResponse'
+        '404':
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /events:
+    get:
+      tags:
+        - 'Event'
+      summary: Mendapatkan event dengan paginasi dan pencarian
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Halaman yang diminta
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Jumlah event per halaman
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Kata kunci untuk pencarian event
+      responses:
+        '200':
+          description: Daftar event berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEventsByPaginationNSearchResponse'
+        '404':
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /events/{id}:
+    get:
+      tags:
+        - 'Event'
+      summary: Mendapatkan event berdasarkan ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID event
+      responses:
+        '200':
+          description: Event berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEventResponse'
+        '404':
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - 'Event'
+      summary: Memperbarui event - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID event
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventRequest'
+      responses:
+        '201':
+          description: Event berhasil diperbarui
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateEventResponse'
+        '400':
+          description: end_date harus lebih besar dari start_date
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Event'
+      summary: Menghapus event - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID event
+      responses:
+        '200':
+          description: Event berhasil dihapus
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteEventResponse'
+        '404':
+          description: Event tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museum:
+    post:
+      tags:
+        - 'Museum'
+      summary: Menambah museum baru - admin
+      security:
+        - bearerAuth: []
+      requestBody:
+        $ref: '#/components/requestBodies/AddMuseumRequest'
+      responses:
+        '201':
+          description: Museum berhasil dibuat
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddMuseumResponse'
+        '400':
+          description: Nama, tentang, alamat, regensi, provinsi, dan gambar diperlukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/all:
+    get:
+      tags:
+        - 'Museum'
+      summary: Mendapatkan semua museum
+      responses:
+        '200':
+          description: Daftar museum berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllMuseumsResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums:
+    get:
+      tags:
+        - 'Museum'
+      summary: Mendapatkan museum dengan paginasi dan pencarian
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Halaman yang diminta
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Jumlah museum per halaman
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Kata kunci untuk pencarian museum
+      responses:
+        '200':
+          description: Daftar museum berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMuseumsByPaginationNSearchResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/{id}:
+    get:
+      tags:
+        - 'Museum'
+      summary: Mendapatkan museum berdasarkan ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      responses:
+        '200':
+          description: Museum berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMuseumResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - 'Museum'
+      summary: Memperbarui museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateMuseumRequest'
+      responses:
+        '200':
+          description: Museum berhasil diperbarui
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateMuseumResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Museum'
+      summary: Menghapus museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      responses:
+        '200':
+          description: Museum berhasil dihapus
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteMuseumResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/operational_hours:
+    post:
+      tags:
+        - 'Museum'
+      summary: Menambah jam operasional museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      requestBody:
+        $ref: '#/components/requestBodies/AddOperationalHourRequest'
+      responses:
+        '201':
+          description: Jam operasional berhasil ditambahkan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddOperationalHourResponse'
+        '400':
+          description: Hari, waktu mulai, waktu selesai, dan zona waktu diperlukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/operational_hours/{id}:
+    put:
+      tags:
+        - 'Museum'
+      summary: Memperbarui jam operasional museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID jam operasional
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateOperationalHourRequest'
+      responses:
+        '200':
+          description: Jam operasional berhasil diperbarui
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateOperationalHourResponse'
+        '404':
+          description: Museum atau jam operasional tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Museum'
+      summary: Menghapus jam operasional museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID jam operasional
+      responses:
+        '200':
+          description: Jam operasional berhasil dihapus
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOperationalHourResponse'
+        '404':
+          description: Museum atau jam operasional tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/tickets:
+    post:
+      tags:
+        - 'Museum'
+      summary: Menambahkan tiket baru untuk museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      requestBody:
+        $ref: '#/components/requestBodies/AddTicketRequest'
+      responses:
+        '201':
+          description: ticket created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddTicketResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Harga tiket tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/tickets/{id}:
+    put:
+      tags:
+        - 'Museum'
+      summary: Memperbarui tiket museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID tiket
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateTicketRequest'
+      responses:
+        '200':
+          description: ticket updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTicketResponse'
+        '404':
+          description: Museum atau tiket tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Harga tiket tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Museum'
+      summary: Menghapus tiket museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID tiket
+      responses:
+        '200':
+          description: ticket deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTicketResponse'
+        '404':
+          description: Museum atau tiket tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/collections:
+    post:
+      tags:
+        - 'Museum'
+      summary: Menambahkan koleksi baru untuk museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+      requestBody:
+        $ref: '#/components/requestBodies/PostCollectionRequest'
+      responses:
+        '201':
+          description: collection created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostCollectionResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Gambar tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /museums/collections/{id}:
+    put:
+      tags:
+        - 'Museum'
+      summary: Memperbarui koleksi museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID koleksi
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCollectionRequest'
+      responses:
+        '200':
+          description: collection updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCollectionResponse'
+        '404':
+          description: Museum atau koleksi tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Gambar tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Museum'
+      summary: Menghapus koleksi museum - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: museum_id
+          required: true
+          schema:
+            type: integer
+          description: ID museum
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID koleksi
+      responses:
+        '200':
+          description: collection deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteCollectionResponse'
+        '404':
+          description: Museum atau koleksi tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /puppet:
+    post:
+      tags:
+        - 'Puppet'
+      summary: Menambahkan wayang baru - admin
+      security:
+        - bearerAuth: []
+      requestBody:
+        $ref: '#/components/requestBodies/AddPuppetRequest'
+      responses:
+        '201':
+          description: puppet created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPuppetResponse'
+        '404':
+          description: Wayang tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Gambar tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /puppets/all:
+    get:
+      tags:
+        - 'Puppet'
+      summary: Mendapatkan semua wayang
+      responses:
+        '200':
+          description: Daftar wayang berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPuppetsResponse'
+        '404':
+          description: Museum tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /puppets:
+    get:
+      tags:
+        - 'Puppet'
+      summary: Mendapatkan wayang dengan paginasi dan pencarian
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Halaman yang diminta
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Jumlah wayang per halaman
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Kata kunci untuk pencarian wayang
+      responses:
+        '200':
+          description: Daftar wayang berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPuppetsByPaginationNSearchResponse'
+        '404':
+          description: Wayang tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /puppets/{id}:
+    get:
+      tags:
+        - 'Puppet'
+      summary: Mendapatkan wayang berdasarkan ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID wayang
+      responses:
+        '200':
+          description: Wayang ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPuppetResponse'
+        '404':
+          description: Wayang tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - 'Puppet'
+      summary: Memperbarui wayang - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID wayang
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePuppetRequest'
+      responses:
+        '200':
+          description: Puppet updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePuppetResponse'
+        '404':
+          description: Wayang tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Gambar tidak valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - 'Puppet'
+      summary: Menghapus wayang - admin
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID wayang
+      responses:
+        '200':
+          description: Puppet deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePuppetResponse'
+        '404':
+          description: Wayang tidak ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-  responses:
-    OK:
-      description: OK
+  requestBodies:
+    LoginRequest:
+      required: true
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: true
-              message:
-                type: string
-                example: OK
-    Created:
-      description: Created
+            $ref: '#/components/schemas/LoginRequest'
+    PostArticleRequest:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/PostArticleRequest'
+    UpdateArticleRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/UpdateArticleRequest'
+    PostEventRequest:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/PostEventRequest'
+    UpdateEventRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/UpdateEventRequest'
+    AddMuseumRequest:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/AddMuseumRequest'
+    UpdateMuseumRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/UpdateMuseumRequest'
+    AddOperationalHourRequest:
+      required: true
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: true
-              message:
-                type: string
-                example: Created
-    BadRequest:
-      description: BadRequest
+            $ref: '#/components/schemas/AddOperationalHourRequest'
+    UpdateOperationalHourRequest:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: false
-              message:
-                type: string
-                example: Bad Request
-              data:
-                type: string
-                example: null
-    Unauthorized:
-      description: Unauthorized
+            $ref: '#/components/schemas/UpdateOperationalHourRequest'
+    AddTicketRequest:
+      required: true
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: false
-              message:
-                type: string
-                example: Unauthorized
-              data:
-                type: string
-                example: null
-    NotFound:
-      description: NotFound
+            $ref: '#/components/schemas/AddTicketRequest'
+    UpdateTicketRequest:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: false
-              message:
-                type: string
-                example: Not Found
-              data:
-                type: string
-                example: null
-    InternalServerError:
-      description: InternalServerError
+            $ref: '#/components/schemas/UpdateTicketRequest'
+    PostCollectionRequest:
+      required: true
       content:
-        application/json:
+        multipart/form-data:
           schema:
-            type: object
-            properties:
-              status:
-                type: boolean
-                example: false
-              message:
-                type: string
-                example: Internal Server Error
-              data:
-                type: string
-                example: null
+            $ref: '#/components/schemas/PostCollectionRequest'
+    UpdateCollectionRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/UpdateCollectionRequest'
+    AddPuppetRequest:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/AddPuppetRequest'
+    UpdatePuppetRequest:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/UpdatePuppetRequest'
   schemas:
-    Authentication:
-      title: Authentication
+    LoginRequest:
       type: object
+      required:
+        - email
+        - password
       properties:
         email:
           type: string
+          format: email
           example: admin@dewantara.com
-        isLoggedIn:
+        password:
+          type: string
+          format: password
+          example: admin123
+    LoginResponse:
+      type: object
+      properties:
+        status:
           type: boolean
           example: true
-        imageUrl:
+        message:
+          type: string
+          example: login success
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            email:
+              type: string
+              format: email
+              example: admin@dewantara.com
+            isLoggedIn:
+              type: boolean
+              example: true
+            token:
+              type: string
+              example: 'jwt_token_here'
+    AdminResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            email:
+              type: string
+              format: email
+              example: admin@dewantara.com
+            isLoggedIn:
+              type: boolean
+              example: true
+    LogoutResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: logout success
+        data:
           type: string
           example: null
-        createdAt:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: false
+        message:
           type: string
-          example: 2022-01-01T00:00:00.000Z
-        updatedAt:
+          example: 'invalid email or password'
+    PostArticleRequest:
+      type: object
+      required:
+        - title
+        - content
+        - file
+      properties:
+        title:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          example: Article Title
+        content:
+          type: string
+          example: Article content goes here...
+        file:
+          type: string
+          format: binary
+    PostArticleResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: article created
+        data:
+          $ref: '#/components/schemas/Article'
+    GetAllArticlesResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    GetArticlesByPaginationNSearchResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+        meta:
+          type: object
+          properties:
+            page:
+              type: integer
+              example: 1
+            limit:
+              type: integer
+              example: 6
+            totalPages:
+              type: integer
+              example: 2
+            totalResults:
+              type: integer
+              example: 12
+    GetArticleResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          $ref: '#/components/schemas/Article'
+    UpdateArticleRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Updated Article Title
+        content:
+          type: string
+          example: Updated article content goes here...
+        file:
+          type: string
+          format: binary
+    UpdateArticleResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: article updated
+        data:
+          $ref: '#/components/schemas/Article'
+    DeleteArticleResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: article deleted
+        data:
+          $ref: '#/components/schemas/Article'
+    PostEventRequest:
+      type: object
+      required:
+        - name
+        - start_date
+        - end_date
+        - location
+        - file
+      properties:
+        name:
+          type: string
+          example: Event Name
+        start_date:
+          type: string
+          format: date
+          example: 2023-07-17
+        end_date:
+          type: string
+          format: date
+          example: 2023-07-20
+        location:
+          type: string
+          example: Event Location
+        file:
+          type: string
+          format: binary
+    PostEventResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: event created
+        data:
+          $ref: '#/components/schemas/Event'
+    GetAllEventsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+    GetEventsByPaginationNSearchResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        meta:
+          type: object
+          properties:
+            page:
+              type: integer
+              example: 1
+            limit:
+              type: integer
+              example: 8
+            totalPages:
+              type: integer
+              example: 2
+            totalResults:
+              type: integer
+              example: 16
+    GetEventResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: OK
+        data:
+          $ref: '#/components/schemas/Event'
+    UpdateEventRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Updated Event Name
+        start_date:
+          type: string
+          format: date
+          example: 2023-07-17
+        end_date:
+          type: string
+          format: date
+          example: 2023-07-20
+        location:
+          type: string
+          example: Updated Event Location
+        file:
+          type: string
+          format: binary
+    UpdateEventResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: event updated
+        data:
+          $ref: '#/components/schemas/Event'
+    DeleteEventResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: event deleted
+        data:
+          $ref: '#/components/schemas/Event'
+    AddMuseumRequest:
+      type: object
+      required:
+        - name
+        - about
+        - address
+        - regency
+        - province
+        - file
+      properties:
+        name:
+          type: string
+          example: Nama Museum
+        about:
+          type: string
+          example: Tentang Museum...
+        address:
+          type: string
+          example: Alamat Museum
+        regency:
+          type: string
+          example: Regency
+        province:
+          type: string
+          example: Province
+        file:
+          type: string
+          format: binary
+    AddMuseumResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: museum created
+        museum:
+          $ref: '#/components/schemas/Museum'
+    GetAllMuseumsResponse:
+      type: object
+      properties:
+        museums:
+          type: array
+          items:
+            $ref: '#/components/schemas/Museum'
+    GetMuseumsByPaginationNSearchResponse:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 10
+        museums:
+          type: array
+          items:
+            $ref: '#/components/schemas/Museum'
+    GetMuseumResponse:
+      type: object
+      properties:
+        museum:
+          $ref: '#/components/schemas/Museum'
+    UpdateMuseumRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        about:
+          type: string
+        address:
+          type: string
+        regency:
+          type: string
+        province:
+          type: string
+        file:
+          type: string
+          format: binary
+    UpdateMuseumResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: museum updated
+        museum:
+          $ref: '#/components/schemas/Museum'
+    DeleteMuseumResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: museum deleted
+    AddOperationalHourRequest:
+      type: object
+      required:
+        - day
+        - openTime
+        - closeTime
+        - timezone
+      properties:
+        is_sunday:
+          type: boolean
+          example: false
+        is_monday:
+          type: boolean
+          example: true
+        is_tuesday:
+          type: boolean
+          example: false
+        is_wednesday:
+          type: boolean
+          example: true
+        is_thursday:
+          type: boolean
+          example: false
+        is_friday:
+          type: boolean
+          example: true
+        is_saturday:
+          type: boolean
+          example: false
+        is_national_holiday:
+          type: boolean
+          example: true
+        start_time:
+          type: string
+          example: '09.00'
+        end_time:
+          type: string
+          example: '17.00'
+        timezone:
+          type: string
+          example: WIB
+    AddOperationalHourResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: operational hour created
+        operationalHour:
+          $ref: '#/components/schemas/OperationalHour'
+    UpdateOperationalHourRequest:
+      type: object
+      properties:
+        is_sunday:
+          type: boolean
+          example: false
+        is_monday:
+          type: boolean
+          example: true
+        is_tuesday:
+          type: boolean
+          example: false
+        is_wednesday:
+          type: boolean
+          example: true
+        is_thursday:
+          type: boolean
+          example: false
+        is_friday:
+          type: boolean
+          example: true
+        is_saturday:
+          type: boolean
+          example: false
+        is_national_holiday:
+          type: boolean
+          example: true
+        start_time:
+          type: string
+          example: '09.00'
+        end_time:
+          type: string
+          example: '17.00'
+        timezone:
+          type: string
+          example: WIB
+    UpdateOperationalHourResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: operational hour updated
+        operationalHour:
+          $ref: '#/components/schemas/OperationalHour'
+    DeleteOperationalHourResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: operational hour deleted
+    AddTicketRequest:
+      type: object
+      required:
+        - price
+        - type
+        - age
+      properties:
+        price:
+          type: number
+          example: 50000
+        type:
+          type: string
+          example: INDIVIDUAL
+        age:
+          type: string
+          example: GENERAL
+    AddTicketResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'ticket created'
+        data:
+          $ref: '#/components/schemas/Ticket'
+    UpdateTicketRequest:
+      type: object
+      properties:
+        price:
+          type: number
+        type:
+          type: string
+        age:
+          type: string
+    UpdateTicketResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'ticket updated'
+        data:
+          $ref: '#/components/schemas/Ticket'
+    DeleteTicketResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'ticket deleted'
+        data:
+          $ref: '#/components/schemas/Ticket'
+    PostCollectionRequest:
+      type: object
+      properties:
+        file:
+          type: array
+          items:
+            type: string
+            format: binary
+    PostCollectionResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'collections created'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Collection'
+    UpdateCollectionRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    UpdateCollectionResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'collection updated'
+        data:
+          $ref: '#/components/schemas/Collection'
+    DeleteCollectionResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'collection deleted'
+        data:
+          $ref: '#/components/schemas/Collection'
+    AddPuppetRequest:
+      type: object
+      required:
+        - name
+        - description
+        - file
+      properties:
+        name:
+          type: string
+          example: Puppet Name
+        description:
+          type: string
+          example: Puppet description
+        file:
+          type: string
+          format: binary
+    AddPuppetResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'puppet created'
+        data:
+          $ref: '#/components/schemas/Puppet'
+    GetAllPuppetsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'OK'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Puppet'
+    GetPuppetResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'OK'
+        data:
+          $ref: '#/components/schemas/Puppet'
+    GetPuppetsByPaginationNSearchResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'OK'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Puppet'
+        meta:
+          type: object
+          properties:
+            page:
+              type: integer
+              example: 1
+            limit:
+              type: integer
+              example: 16
+            totalPages:
+              type: integer
+              example: 3
+            totalResults:
+              type: integer
+              example: 33
+    UpdatePuppetRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Puppet Name
+        description:
+          type: string
+          example: Puppet description
+        file:
+          type: string
+          format: binary
+    UpdatePuppetResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'puppet updated'
+        data:
+          $ref: '#/components/schemas/Puppet'
+    DeletePuppetResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'puppet deleted'
+        data:
+          $ref: '#/components/schemas/Puppet'
     Article:
-      title: Article
       type: object
       properties:
         id:
@@ -154,43 +1845,25 @@ components:
           example: 1
         title:
           type: string
-          example: Melacak Jejak Sejarah Wayang Dari Masa Lalu Hingga Kini
+          example: Article Title
         content:
           type: string
-          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          example: Article content goes here...
         imageUrl:
           type: string
-          example: null
+          example: 'https://example.com/image.jpg'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
         timeAgo:
           type: string
-          example: 1 hour ago
-        createdAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
-        updatedAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
-    Puppet:
-      title: Puppet
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        name:
-          type: string
-          example: Puntadewa
-        description:
-          type: string
-          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        createdAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
-        updatedAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
+          example: '3 hours ago'
     Event:
-      title: Event
       type: object
       properties:
         id:
@@ -198,24 +1871,30 @@ components:
           example: 1
         name:
           type: string
-          example: Pagelaran Wayang Kulit HARJASDA
+          example: Event Name
         startDate:
           type: string
-          example: 2024-02-02T00:00:00.000Z
+          format: date
+          example: 2023-07-17
         endDate:
           type: string
-          example: 2024-02-02T00:00:00.000Z
+          format: date
+          example: 2023-07-20
         location:
           type: string
-          example: Sidoarjo
+          example: Event Location
+        imageUrl:
+          type: string
+          example: 'https://example.com/image.jpg'
         createdAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
         updatedAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
     Museum:
-      title: Museum
       type: object
       properties:
         id:
@@ -223,95 +1902,78 @@ components:
           example: 1
         name:
           type: string
-          example: Museum Wayang
+          example: Nama Museum
         about:
           type: string
-          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        imageUrl:
-          type: string
-          example: https://ik.imagekit.io/madamiz/1720457263822_TAdoLNWiY.png
-        createdAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
-        updatedAt:
-          type: string
-          example: 2022-01-01T00:00:00.000Z
-    Location:
-      title: Location
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
+          example: Tentang Museum...
         address:
           type: string
-          example: Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah
+          example: Alamat Museum
         regency:
           type: string
-          example: Banyumas
+          example: Regency
         province:
           type: string
-          example: Jawa Tengah
-        museumId:
-          type: integer
-          example: 1
+          example: Province
+        imageUrl:
+          type: string
+          example: http://example.com/image.jpg
         createdAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
         updatedAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
-    OperatingHour:
-      title: Operating Hour
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
+    OperationalHour:
       type: object
       properties:
         id:
           type: integer
           example: 1
-        isSunday:
+        is_sunday:
+          type: boolean
+          example: false
+        is_monday:
           type: boolean
           example: true
-        isMonday:
+        is_tuesday:
+          type: boolean
+          example: false
+        is_wednesday:
           type: boolean
           example: true
-        isTuesday:
+        is_thursday:
+          type: boolean
+          example: false
+        is_friday:
           type: boolean
           example: true
-        isWednesday:
+        is_saturday:
+          type: boolean
+          example: false
+        is_national_holiday:
           type: boolean
           example: true
-        isThursday:
-          type: boolean
-          example: true
-        isFriday:
-          type: boolean
-          example: true
-        isSaturday:
-          type: boolean
-          example: true
-        isNationalHoliday:
-          type: boolean
-          example: true
-        startTime:
+        start_time:
           type: string
-          example: 10.00
-        endTime:
+          example: '09.00'
+        end_time:
           type: string
-          example: 18.00
+          example: '17.00'
         timezone:
           type: string
           example: WIB
-        museumId:
-          type: integer
-          example: 1
         createdAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
         updatedAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
     Ticket:
-      title: Ticket
       type: object
       properties:
         id:
@@ -319,24 +1981,25 @@ components:
           example: 1
         price:
           type: number
-          example: 10000
+          example: 50000
         type:
           type: string
           example: INDIVIDUAL
         age:
           type: string
-          example: ADULT
+          example: GENERAL
         museumId:
           type: integer
           example: 1
         createdAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
         updatedAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
     Collection:
-      title: Collection
       type: object
       properties:
         id:
@@ -344,25 +2007,44 @@ components:
           example: 1
         imageUrl:
           type: string
-          example: https://ik.imagekit.io/madamiz/1720457263822_TAdoLNWiY.png
+          example: http://example.com/image.jpg
+        museumId:
+          type: integer
+          example: 1
         createdAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
         updatedAt:
           type: string
-          example: 2022-01-01T00:00:00.000Z
-  requestBodies:
-    Login:
-      description: Login
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              email:
-                type: string
-                example: admin@dewantara.com
-              password:
-                type: string
-                example: admin123
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
+    Puppet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Puppet Name
+        description:
+          type: string
+          example: Puppet Description
+        imageUrl:
+          type: string
+          example: http://example.com/image.jpg
+        createdAt:
+          type: string
+          format: date-time
+          example: '2023-07-17T10:55:00Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2023-07-17T11:55:00Z'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
