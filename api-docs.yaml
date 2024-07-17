@@ -10,6 +10,8 @@ servers:
     description: Development server
   - url: http://localhost:3001/api/v1
     description: Development server - Vercel
+  - url: https://dewantara-api.vercel.app/api/v1
+    description: Production server
 
 paths:
   /auth/login:
