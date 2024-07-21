@@ -39,6 +39,7 @@ model BlacklistedToken {
 model Puppet {
   id          Int      @id @default(autoincrement())
   name        String
+  type        String
   description String?
   imageUrl    String?
   createdAt   DateTime @default(now())
@@ -80,6 +81,8 @@ model Location {
   address   String
   regency   String
   province  String
+  latitude  Float
+  longitude Float
   museumId  Int
   museum    Museum   @relation(fields: [museumId], references: [id])
   createdAt DateTime @default(now())
@@ -110,16 +113,16 @@ model OperationalHour {
 }
 
 model Ticket {
-  id         Int      @id @default(autoincrement())
-  price      Decimal  @default(0.0)
-  isWeekdays Boolean  @default(true)
-  isWeekend  Boolean  @default(true)
-  type       Type     @default(INDIVIDUAL)
-  age        Age      @default(GENERAL)
-  museumId   Int
-  museum     Museum   @relation(fields: [museumId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  price     Decimal  @default(0.0)
+  type      Type     @default(INDIVIDUAL)
+  age       Age      @default(GENERAL)
+  isWeekday Boolean  @default(true)
+  isWeekend Boolean  @default(true)
+  museumId  Int
+  museum    Museum   @relation(fields: [museumId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("tickets")
 }
@@ -148,12 +151,12 @@ model Collection {
 }
 
 model Article {
-  id          Int      @id @default(autoincrement())
-  title       String
-  content     String
-  imageUrl    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("articles")
 }

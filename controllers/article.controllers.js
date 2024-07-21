@@ -83,31 +83,10 @@ module.exports = {
 
 			let offset = (pageNumber - 1) * limitNumber;
 
-			let where = {};
-
-			if (search) {
-				where = {
-					OR: [
-						{
-							title: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						},
-						{
-							content: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						}
-					]
-				};
-			}
-
 			let results = await prisma.article.findMany({
 				take: limitNumber,
 				skip: offset,
-				where
+				where: { title: { contains: search, mode: 'insensitive' } }
 			});
 
 			if (results.length === 0) {
@@ -118,7 +97,9 @@ module.exports = {
 				});
 			}
 
-			let total = await prisma.article.count({ where });
+			let total = await prisma.article.count({
+				where: { title: { contains: search, mode: 'insensitive' } }
+			});
 
 			let articles = results.map((article) => {
 				return {

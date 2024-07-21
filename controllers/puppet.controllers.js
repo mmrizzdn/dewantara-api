@@ -7,9 +7,9 @@ const imagekit = require('../libs/imagekit');
 module.exports = {
 	addPuppet: async (req, res, next) => {
 		try {
-			let { name, description } = req.body;
+			let { name, type, description } = req.body;
 
-			if (!name || !description || !req.file) {
+			if (!name || !type || !description || !req.file) {
 				return res.status(400).json({
 					status: false,
 					message: 'name, description, and image required',
@@ -27,6 +27,7 @@ module.exports = {
 			let puppet = await prisma.puppet.create({
 				data: {
 					name,
+					type,
 					description,
 					imageUrl: url
 				}
@@ -73,31 +74,10 @@ module.exports = {
 
 			let offset = (pageNumber - 1) * limitNumber;
 
-			let where = {};
-
-			if (search) {
-				where = {
-					OR: [
-						{
-							name: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						},
-						{
-							description: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						}
-					]
-				};
-			}
-
 			let results = await prisma.puppet.findMany({
 				take: limitNumber,
 				skip: offset,
-				where
+				where: { name: { contains: search, mode: 'insensitive' } }
 			});
 
 			if (results.length === 0) {
@@ -108,7 +88,9 @@ module.exports = {
 				});
 			}
 
-			let total = await prisma.puppet.count({ where });
+			let total = await prisma.puppet.count({
+				where: { name: { contains: search, mode: 'insensitive' } }
+			});
 
 			return res.status(200).json({
 				status: true,
@@ -155,7 +137,7 @@ module.exports = {
 	updatePuppet: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
-			let { name, description } = req.body;
+			let { name, type, description } = req.body;
 
 			let result = await prisma.puppet.findUnique({
 				where: { id }
@@ -171,6 +153,10 @@ module.exports = {
 
 			if (name) {
 				result.name = name;
+			}
+
+			if (type) {
+				result.type = type;
 			}
 
 			if (description) {
@@ -192,6 +178,7 @@ module.exports = {
 				where: { id },
 				data: {
 					name: result.name,
+					type: result.type,
 					description: result.description,
 					imageUrl: result.imageUrl
 				}

@@ -7,7 +7,9 @@
 			{
 				"address": "Jalan Pintu Besar Utara No.27 Pinangsia, RT.3/RW.6, Kota Tua, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta",
 				"regency": "Jakarta Barat",
-				"province": "Daerah Khusus Ibukota Jakarta"
+				"province": "Daerah Khusus Ibukota Jakarta",
+				"latitude": -6.134603179241058,
+				"longitude": 106.81239155582256
 			}
 		],
 		"OperationalHour": [
@@ -77,7 +79,9 @@
 			{
 				"address": "Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
 				"regency": "Banyumas",
-				"province": "Jawa Tengah"
+				"province": "Jawa Tengah",
+				"latitude": -7.441697529597863,
+				"longitude": 109.27129776218581
 			}
 		],
 		"OperationalHour": [
@@ -136,7 +140,9 @@
 			{
 				"address": "Jl. Raya Wuryantoro No.184, Ngebel, Wuryantoro, Kec. Wuryantoro, Kabupaten Wonogiri, Jawa Tengah",
 				"regency": "Wonogiri",
-				"province": "Jawa Tengah"
+				"province": "Jawa Tengah",
+				"latitude": -7.907219830559986,
+				"longitude": 110.86529721349352
 			}
 		],
 		"OperationalHour": [
@@ -174,9 +180,11 @@
 		"imageUrl": "https://ik.imagekit.io/madamiz/dewantara/museum_topeng_&_wayang_ubud/image%2015.png?updatedAt=1720966122584",
 		"Location": [
 			{
-				"address": "Jalan Tegal Bingin, Banjar Tengkulak Tengah, Kemenuh, Sukawati, Gianyar Regency, Bali",
-				"regency": "Regency",
-				"province": "Bali"
+				"address": "Jalan Tegal Bingin, Banjar Tengkulak Tengah, Kemenuh, Sukawati, Gianyar, Bali",
+				"regency": "Ginayar",
+				"province": "Bali",
+				"latitude": -8.315373322802781,
+				"longitude": 115.15346494302986
 			}
 		],
 		"OperationalHour": [
@@ -222,7 +230,9 @@
 			{
 				"address": "Jalan R.A Kartini No.23, Kelurahan Kauman, Kecamatan Prajurit Kulon, Kota Mojokerto, Jawa Timur",
 				"regency": "Mojokerto",
-				"province": "Jawa Timur"
+				"province": "Jawa Timur",
+				"latitude": -7.465649829511881,
+				"longitude": 112.43022031534194
 			}
 		],
 		"OperationalHour": [
@@ -247,7 +257,7 @@
 			},
 			{
 				"price": 30000,
-				"isWeekdays": false
+				"isWeekday": false
 			}
 		],
 		"Collection": [
@@ -267,7 +277,9 @@
 			{
 				"address": "Jl.  Nagri Kidul, Kec. Purwakarta, Kabupaten Purwakarta, Jawa Barat",
 				"regency": "Purwakarta",
-				"province": "Jawa Barat"
+				"province": "Jawa Barat",
+				"latitude": -6.556838573497954,
+				"longitude": 107.44189862883549
 			}
 		],
 		"OperationalHour": [

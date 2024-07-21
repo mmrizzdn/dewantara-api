@@ -6,7 +6,7 @@
 		"start": "node ./bin/www",
 		"dev": "nodemon ./bin/www",
 		"seed": "node ./prisma/seeders/seed.js",
-		"vercel-build": "npx prisma generate"
+		"vercel-build": "npx prisma migrate deploy --force && npx prisma generate && npx prisma db seed"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.17.0",

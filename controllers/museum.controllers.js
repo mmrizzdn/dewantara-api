@@ -7,7 +7,15 @@ const imagekit = require('../libs/imagekit');
 module.exports = {
 	addMuseum: async (req, res, next) => {
 		try {
-			let { name, about, address, regency, province } = req.body;
+			let {
+				name,
+				about,
+				address,
+				regency,
+				province,
+				latitude,
+				longitude
+			} = req.body;
 
 			if (
 				!name ||
@@ -15,6 +23,8 @@ module.exports = {
 				!address ||
 				!regency ||
 				!province ||
+				!latitude ||
+				!longitude ||
 				!req.file
 			) {
 				return res.status(400).json({
@@ -41,7 +51,9 @@ module.exports = {
 						create: {
 							address,
 							regency,
-							province
+							province,
+							latitude,
+							longitude
 						}
 					}
 				}
@@ -95,31 +107,10 @@ module.exports = {
 
 			let offset = (pageNumber - 1) * limitNumber;
 
-			let where = {};
-
-			if (search) {
-				where = {
-					OR: [
-						{
-							name: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						},
-						{
-							about: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						}
-					]
-				};
-			}
-
 			let results = await prisma.museum.findMany({
 				take: limitNumber,
 				skip: offset,
-				where,
+				where: { name: { contains: search, mode: 'insensitive' } },
 				include: {
 					Location: true,
 					OperationalHour: true,
@@ -136,7 +127,7 @@ module.exports = {
 				});
 			}
 
-			let total = await prisma.museum.count({ where });
+			let total = await prisma.museum.count({ where: { name: { contains: search, mode: 'insensitive' } } });
 
 			return res.status(200).json({
 				status: true,
@@ -189,7 +180,15 @@ module.exports = {
 	updateMuseum: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
-			let { name, about, address, regency, province } = req.body;
+			let {
+				name,
+				about,
+				address,
+				regency,
+				province,
+				latitude,
+				longitude
+			} = req.body;
 
 			let result = await prisma.museum.findUnique({
 				where: { id }
@@ -227,6 +226,14 @@ module.exports = {
 				location.province = province;
 			}
 
+			if (latitude) {
+				location.latitude = latitude;
+			}
+
+			if (longitude) {
+				location.longitude = longitude;
+			}
+
 			if (req.file) {
 				let strFile = req.file.buffer.toString('base64');
 
@@ -252,7 +259,9 @@ module.exports = {
 				data: {
 					address: location.address,
 					regency: location.regency,
-					province: location.province
+					province: location.province,
+					latitude: location.latitude,
+					longitude: location.longitude
 				}
 			});
 
@@ -583,7 +592,7 @@ module.exports = {
 				});
 			}
 
-			let { price, type, age } = req.body;
+			let { price, type, age, is_weekday, is_weekend } = req.body;
 
 			if (!price) {
 				return res.status(400).json({
@@ -598,6 +607,8 @@ module.exports = {
 					price,
 					type,
 					age,
+					isWeekday: is_weekday,
+					isWeekend: is_weekend,
 					museumId
 				}
 			});
@@ -649,7 +660,7 @@ module.exports = {
 				});
 			}
 
-			let { price, type, age } = req.body;
+			let { price, type, age, is_weekday, is_weekend } = req.body;
 
 			if (price) {
 				result.price = price;
@@ -663,12 +674,22 @@ module.exports = {
 				result.age = age;
 			}
 
+			if (is_weekday) {
+				result.isWeekday = is_weekday;
+			}
+
+			if (is_weekend) {
+				result.isWeekend = is_weekend;
+			}
+
 			let ticket = await prisma.ticket.update({
 				where: { id, museumId },
 				data: {
 					price: result.price,
 					type: result.type,
-					age: result.age
+					age: result.age,
+					isWeekday: result.isWeekday,
+					isWeekend: result.isWeekend
 				}
 			});
 
