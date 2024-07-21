@@ -12,7 +12,9 @@ module.exports = {
             const locations = museum.Location ? museum.Location.map(location => ({
                 address: location.address,
                 regency: location.regency,
-                province: location.province
+                province: location.province,
+                latitude: location.latitude,
+                longitude: location.longitude
             })) : [];
 
             const operationalHours = museum.OperationalHour ? museum.OperationalHour.map(hour => ({
@@ -32,7 +34,9 @@ module.exports = {
             const tickets = museum.Ticket ? museum.Ticket.map(ticket => ({
                 price: ticket.price,
                 age: ticket.age,
-                type: ticket.type
+                type: ticket.type,
+                isWeekday: ticket.isWeekday,
+                isWeekend: ticket.isWeekend
             })) : [];
 
             const collections = museum.Collection ? museum.Collection.map(collection => ({

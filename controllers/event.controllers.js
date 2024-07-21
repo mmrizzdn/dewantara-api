@@ -87,31 +87,10 @@ module.exports = {
 
 			let offset = (pageNumber - 1) * limitNumber;
 
-			let where = {};
-
-			if (search) {
-				where = {
-					OR: [
-						{
-							name: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						},
-						{
-							location: {
-								contains: search,
-								mode: 'insensitive'
-							}
-						}
-					]
-				};
-			}
-
 			let results = await prisma.event.findMany({
 				take: limitNumber,
 				skip: offset,
-				where
+				where: { name: { contains: search, mode: 'insensitive' } }
 			});
 
 			if (results.length === 0) {
@@ -122,7 +101,9 @@ module.exports = {
 				});
 			}
 
-			let total = await prisma.event.count({ where });
+			let total = await prisma.event.count({
+				where: { name: { contains: search, mode: 'insensitive' } }
+			});
 
 			return res.status(200).json({
 				status: true,

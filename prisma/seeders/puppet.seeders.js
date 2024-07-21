@@ -6,14 +6,15 @@ const path = require('path');
 module.exports = {
 	puppets: async () => {
 		let filePath = path.join(__dirname, 'data', 'puppets.json');
-		let events = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+		let puppets = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-		for (let event of events) {
+		for (let puppet of puppets) {
 			await prisma.puppet.create({
 				data: {
-					name: event.name,
-					description: event.description,
-					imageUrl: event.imageUrl
+					name: puppet.name,
+					description: puppet.description,
+					type: puppet.type,
+					imageUrl: puppet.imageUrl
 				}
 			});
 		}
