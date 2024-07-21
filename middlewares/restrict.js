@@ -26,7 +26,7 @@ module.exports = {
 
 		if (blacklistedToken) {
 			return res.status(401).json({
-				status: false,
+				status: false,	
 				message: 'token blacklisted',
 				data: null
 			});
@@ -34,22 +34,14 @@ module.exports = {
 
 		jwt.verify(token, JWT_SECRET, async (err, admin) => {
 			if (err) {
-				if (err.name === 'TokenExpiredError') {
-					await prisma.admin.update({
-						where: { id: admin.id },
-						data: { isLogedIn: false }
-					});
-
-					return res.status(401).json({
-						status: false,
-						message: 'token expired. admin logged out',
-						data: null
-					});
-				}
+				await prisma.admin.update({
+					where: { id: 1 },
+					data: { isLoggedIn: false }
+				});
 
 				return res.status(401).json({
 					status: false,
-					message: err.message,
+					message: `${err.message}. admin logged out`,
 					data: null
 				});
 			}
