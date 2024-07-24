@@ -7,15 +7,7 @@ const imagekit = require('../libs/imagekit');
 module.exports = {
 	addMuseum: async (req, res, next) => {
 		try {
-			let {
-				name,
-				about,
-				address,
-				regency,
-				province,
-				latitude,
-				longitude
-			} = req.body;
+			let { name, about, address, regency, province, mapsUrl } = req.body;
 
 			if (
 				!name ||
@@ -23,8 +15,7 @@ module.exports = {
 				!address ||
 				!regency ||
 				!province ||
-				!latitude ||
-				!longitude ||
+				!mapsUrl ||
 				!req.file
 			) {
 				return res.status(400).json({
@@ -52,8 +43,7 @@ module.exports = {
 							address,
 							regency,
 							province,
-							latitude,
-							longitude
+							mapsUrl
 						}
 					}
 				}
@@ -127,7 +117,9 @@ module.exports = {
 				});
 			}
 
-			let total = await prisma.museum.count({ where: { name: { contains: search, mode: 'insensitive' } } });
+			let total = await prisma.museum.count({
+				where: { name: { contains: search, mode: 'insensitive' } }
+			});
 
 			return res.status(200).json({
 				status: true,
@@ -180,15 +172,7 @@ module.exports = {
 	updateMuseum: async (req, res, next) => {
 		try {
 			let id = Number(req.params.id);
-			let {
-				name,
-				about,
-				address,
-				regency,
-				province,
-				latitude,
-				longitude
-			} = req.body;
+			let { name, about, address, regency, province, mapsUrl } = req.body;
 
 			let result = await prisma.museum.findUnique({
 				where: { id }
@@ -226,12 +210,8 @@ module.exports = {
 				location.province = province;
 			}
 
-			if (latitude) {
-				location.latitude = latitude;
-			}
-
-			if (longitude) {
-				location.longitude = longitude;
+			if (mapsUrl) {
+				location.mapsUrl = mapsUrl;
 			}
 
 			if (req.file) {
@@ -260,8 +240,7 @@ module.exports = {
 					address: location.address,
 					regency: location.regency,
 					province: location.province,
-					latitude: location.latitude,
-					longitude: location.longitude
+					mapsUrl: location.mapsUrl
 				}
 			});
 

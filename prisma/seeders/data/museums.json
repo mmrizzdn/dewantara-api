@@ -8,8 +8,7 @@
 				"address": "Jalan Pintu Besar Utara No.27 Pinangsia, RT.3/RW.6, Kota Tua, Kec. Taman Sari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta",
 				"regency": "Jakarta Barat",
 				"province": "Daerah Khusus Ibukota Jakarta",
-				"latitude": -6.134603179241058,
-				"longitude": 106.81239155582256
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9687053641574!2d106.8124452!3d-6.1349072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1dff48f259ff%3A0xfeb6bfd7e15db853!2sMuseum%20Wayang!5e0!3m2!1sid!2sid!4v1721820772794!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [
@@ -80,8 +79,7 @@
 				"address": "Jl. Budi Utomo No.1, Banyumas, Sudagaran, Kec. Banyumas, Kabupaten Banyumas, Jawa Tengah",
 				"regency": "Banyumas",
 				"province": "Jawa Tengah",
-				"latitude": -7.441697529597863,
-				"longitude": 109.27129776218581
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2028319.537632489!2d106.7334561!3d-6.823051!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655b5287d3723f%3A0xb2c6f4da934e4b4d!2sMuseum%20Wayang%20Banyumas!5e0!3m2!1sid!2sid!4v1721821175443!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [
@@ -141,8 +139,7 @@
 				"address": "Jl. Raya Wuryantoro No.184, Ngebel, Wuryantoro, Kec. Wuryantoro, Kabupaten Wonogiri, Jawa Tengah",
 				"regency": "Wonogiri",
 				"province": "Jawa Tengah",
-				"latitude": -7.907219830559986,
-				"longitude": 110.86529721349352
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.881888865776!2d110.8653294!3d-7.907405799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a338c06dd00e5%3A0x3f14c47390a7f5c8!2sMuseum%20Wayang%20Indonesia%20Kab.%20Wonogiri!5e0!3m2!1sid!2sid!4v1721821304485!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [
@@ -183,8 +180,7 @@
 				"address": "Jalan Tegal Bingin, Banjar Tengkulak Tengah, Kemenuh, Sukawati, Gianyar, Bali",
 				"regency": "Ginayar",
 				"province": "Bali",
-				"latitude": -8.315373322802781,
-				"longitude": 115.15346494302986
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4043680.9766553123!2d110.4293441!3d-8.2120869!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23d8620e3b60d%3A0xc82bdc98533e47f!2sRumah%20Topeng%20dan%20Wayang%20Setia%20Darma!5e0!3m2!1sid!2sid!4v1721821679796!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [
@@ -231,8 +227,7 @@
 				"address": "Jalan R.A Kartini No.23, Kelurahan Kauman, Kecamatan Prajurit Kulon, Kota Mojokerto, Jawa Timur",
 				"regency": "Mojokerto",
 				"province": "Jawa Timur",
-				"latitude": -7.465649829511881,
-				"longitude": 112.43022031534194
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.995944845297!2d112.43017739999999!3d-7.465697699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e780b2e6914f90d%3A0x140a6c48cd0ab1d8!2sMuseum%20Gubug%20Wayang%20Mojokerto!5e0!3m2!1sid!2sid!4v1721821752449!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [
@@ -278,8 +273,7 @@
 				"address": "Jl.  Nagri Kidul, Kec. Purwakarta, Kabupaten Purwakarta, Jawa Barat",
 				"regency": "Purwakarta",
 				"province": "Jawa Barat",
-				"latitude": -6.556838573497954,
-				"longitude": 107.44189862883549
+				"mapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.719702527237!2d107.4418879!3d-6.557025100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690e51ad0b750b%3A0xfbac4b55b959e00b!2sGaleri%20Wayang%20Purwakarta!5e0!3m2!1sid!2sid!4v1721821800184!5m2!1sid!2sid"
 			}
 		],
 		"OperationalHour": [

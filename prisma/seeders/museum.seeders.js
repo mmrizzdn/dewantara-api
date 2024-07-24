@@ -13,8 +13,7 @@ module.exports = {
                 address: location.address,
                 regency: location.regency,
                 province: location.province,
-                latitude: location.latitude,
-                longitude: location.longitude
+                mapsUrl: location.mapsUrl
             })) : [];
 
             const operationalHours = museum.OperationalHour ? museum.OperationalHour.map(hour => ({
