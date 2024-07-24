@@ -81,8 +81,7 @@ model Location {
   address   String
   regency   String
   province  String
-  latitude  Float
-  longitude Float
+  mapsUrl String
   museumId  Int
   museum    Museum   @relation(fields: [museumId], references: [id])
   createdAt DateTime @default(now())
