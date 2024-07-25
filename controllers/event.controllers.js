@@ -21,13 +21,13 @@ module.exports = {
 			let startDate = new Date(start_date);
 			let endDate = new Date(end_date);
 
-			if (startDate > endDate) {
-				return res.status(400).json({
-					status: false,
-					message: 'start_date cannot be greater than end_date',
-					data: null
-				});
-			}
+			// if (startDate > endDate) {
+			// 	return res.status(400).json({
+			// 		status: false,
+			// 		message: 'start_date cannot be greater than end_date',
+			// 		data: null
+			// 	});
+			// }
 
 			let strFile = req.file.buffer.toString('base64');
 
@@ -180,13 +180,13 @@ module.exports = {
 				result.startDate = new Date(end_date);
 			}
 
-			if (result.startDate > result.endDate) {
-				return res.status(400).json({
-					status: false,
-					message: 'end_date must be greater than start_date',
-					data: null
-				});
-			}
+			// if (result.startDate > result.endDate) {
+			// 	return res.status(400).json({
+			// 		status: false,
+			// 		message: 'end_date must be greater than start_date',
+			// 		data: null
+			// 	});
+			// }
 
 			if (req.file) {
 				let strFile = req.file.buffer.toString('base64');
